@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { apiClient, openAuthedFile, fetchAuthedBlobUrl } from '../lib/apiClient'
 import { openConsultationSocket } from '../lib/consultationSocket'
@@ -138,6 +138,8 @@ function ConsultationThread({ bookingId }) {
 function BookingDetailPage() {
   useDocumentTitle('Chi tiết lịch hẹn')
   const { id } = useParams()
+  const location = useLocation()
+  const isChatTab = location.pathname.endsWith('/chat')
   const { user, ready } = useAuth()
 
   const [booking, setBooking] = useState(null)
@@ -239,7 +241,22 @@ function BookingDetailPage() {
           Chuyên gia sẽ xem hồ sơ bạn đã gửi và trao đổi trực tiếp qua tin nhắn trong khung giờ đã chọn.
         </p>
 
-        <div className="mt-6 border-t border-[#dbeafe] pt-6">
+        <nav className="mt-6 grid grid-cols-2 gap-2 rounded-2xl bg-[#eff6ff] p-1.5" aria-label="Lịch hẹn và phòng chat">
+          <Link
+            to={`/my-bookings/${booking.id}`}
+            className={`rounded-xl px-4 py-2.5 text-center text-xs font-bold transition ${!isChatTab ? 'bg-white text-[#2563eb] shadow-sm' : 'text-[#64748B] hover:text-[#172554]'}`}
+          >
+            Thông tin lịch
+          </Link>
+          <Link
+            to={`/my-bookings/${booking.id}/chat`}
+            className={`rounded-xl px-4 py-2.5 text-center text-xs font-bold transition ${isChatTab ? 'bg-[#2563eb] text-white shadow-sm' : 'text-[#64748B] hover:text-[#172554]'}`}
+          >
+            Phòng chat
+          </Link>
+        </nav>
+
+        {!isChatTab && <div className="mt-6 border-t border-[#dbeafe] pt-6">
           <p className="text-xs font-mono font-semibold tracking-wider text-[#1d4ed8] uppercase">Kết quả tư vấn</p>
 
           {booking.consultationReport ? (
@@ -274,9 +291,9 @@ function BookingDetailPage() {
           {errorMessage && (
             <p className="mt-4 rounded-xl bg-rose-50 border border-rose-200 px-4 py-3 text-sm font-medium text-rose-700">{errorMessage}</p>
           )}
-        </div>
+        </div>}
 
-        <ConsultationThread bookingId={booking.id} />
+        {isChatTab && <ConsultationThread bookingId={booking.id} />}
       </div>
     </div>
   )

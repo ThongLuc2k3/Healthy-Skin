@@ -1,6 +1,7 @@
 import { query } from '../db/connection.js'
 import { getExpertById } from './expertService.js'
 import { recordExpertBookingSettlement } from './settlementService.js'
+import { getActiveBookingForUser } from './bookingService.js'
 
 function toShape(row) {
   if (!row) return null
@@ -21,6 +22,13 @@ function toShape(row) {
 }
 
 export async function createProposal(userId, expertId, { date, time, feeVnd, note }) {
+  const activeBooking = await getActiveBookingForUser(userId)
+  if (activeBooking) {
+    const error = new Error('User already has an active expert booking')
+    error.status = 409
+    error.publicMessage = `Bạn đang có lịch với ${activeBooking.expert?.name || 'một chuyên gia'}. Hãy hoàn tất lịch hiện tại trước khi gửi đề xuất mới.`
+    throw error
+  }
   const expert = await getExpertById(expertId)
   if (!expert) return null
   const fee = Number(feeVnd)
@@ -70,6 +78,13 @@ export async function respondToProposal(expertId, proposalId, accept, expertNote
 // phí khách đã đề xuất (không phải giá niêm yết của chuyên gia). Trả về { proposal, bookingId } để
 // route gọi tiếp createThreadForBooking giống hệt luồng đặt lịch chuẩn.
 export async function confirmProposal(userId, proposalId) {
+  const activeBooking = await getActiveBookingForUser(userId)
+  if (activeBooking) {
+    const error = new Error('User already has an active expert booking')
+    error.status = 409
+    error.publicMessage = `Bạn đang có lịch với ${activeBooking.expert?.name || 'một chuyên gia'}. Hãy hoàn tất lịch hiện tại trước khi xác nhận lịch mới.`
+    throw error
+  }
   const proposal = await getProposalRawById(proposalId)
   if (!proposal || Number(proposal.user_id) !== Number(userId) || proposal.status !== 'accepted') return null
 

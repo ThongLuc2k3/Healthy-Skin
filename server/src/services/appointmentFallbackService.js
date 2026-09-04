@@ -68,6 +68,7 @@ export async function getAppointmentFallbackReply(messages, context = {}) {
     await createThreadForBooking(booking.id, context.userId)
     return {
       reply: `Đã đặt lịch thành công với ${selectedExpert.name} lúc ${selectedSlot}. Phí tư vấn ${Number(selectedExpert.consultation_fee_vnd || 0).toLocaleString('vi-VN')}đ. Mã lịch hẹn: ${booking.id}.`,
+      navigateTo: `/my-bookings/${booking.id}/chat`,
       toolsUsed: ['appointment_fallback', 'book_expert_appointment'],
       responseMode: 'agent_fallback',
     }

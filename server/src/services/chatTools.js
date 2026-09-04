@@ -272,7 +272,7 @@ export async function executeChatTool(name, args = {}, context = {}) {
       const booking = await createBooking(context.userId, args.expertId, args.slot)
       if (!booking) return { error: 'Chuyên gia hoặc khung giờ không còn khả dụng.' }
       await createThreadForBooking(booking.id, context.userId)
-      return { success: true, booking }
+      return { success: true, booking, navigateTo: `/my-bookings/${booking.id}/chat` }
     }
     case 'propose_expert_appointment': {
       const blocked = requireLogin(context) || requireConfirmation(args, `Gửi đề xuất ${args.date} ${args.time}`, context)

@@ -50,6 +50,7 @@ function ExpertDetailPage() {
   const [expert, setExpert] = useState(null)
   useDocumentTitle(expert?.name || 'Chuyên gia')
   const [myBookings, setMyBookings] = useState([])
+  const [activeBooking, setActiveBooking] = useState(null)
   const [status, setStatus] = useState('loading')
   const [errorMessage, setErrorMessage] = useState('')
   const [selectedSlot, setSelectedSlot] = useState('')
@@ -81,10 +82,13 @@ function ExpertDetailPage() {
 
   useEffect(() => {
     if (!user) return
-    apiClient
-      .get(`/experts/${id}/my-bookings`, { auth: true })
-      .then(setMyBookings)
-      .catch(() => {})
+    Promise.all([
+      apiClient.get(`/experts/${id}/my-bookings`, { auth: true }),
+      apiClient.get('/experts/bookings/active', { auth: true }),
+    ]).then(([bookings, currentBooking]) => {
+      setMyBookings(bookings)
+      setActiveBooking(currentBooking)
+    }).catch(() => {})
   }, [id, user])
 
   function loadProposals() {
@@ -122,7 +126,7 @@ function ExpertDetailPage() {
     setProposalError('')
     try {
       const confirmed = await apiClient.post(`/experts/proposals/${proposalId}/confirm`, {}, { auth: true })
-      navigate(`/my-bookings/${confirmed.bookingId}`)
+      navigate(`/my-bookings/${confirmed.bookingId}/chat`)
     } catch (err) {
       setProposalError(err.message)
       setConfirmingId(null)
@@ -139,7 +143,7 @@ function ExpertDetailPage() {
         { slot: selectedSlot, consent: true },
         { auth: true },
       )
-      navigate(`/my-bookings/${created.id}`)
+      navigate(`/my-bookings/${created.id}/chat`)
     } catch (err) {
       setErrorMessage(err.message)
     } finally {
@@ -349,6 +353,14 @@ function ExpertDetailPage() {
               <div>
                 {user ? (
                   <>
+                    {activeBooking && (
+                      <div className="mb-4 rounded-2xl border border-blue-200 bg-blue-50 p-4 text-center">
+                        <p className="text-xs font-bold text-[#172554]">Bạn đang có lịch với {activeBooking.expert?.name} vào {activeBooking.slot}.</p>
+                        <Link to={`/my-bookings/${activeBooking.id}/chat`} className="mt-2 inline-flex text-xs font-bold text-[#2563eb] underline">
+                          Vào phòng chat hiện tại
+                        </Link>
+                      </div>
+                    )}
                     <label className="mb-4 flex items-start gap-2.5 text-xs leading-relaxed text-[#172554] cursor-pointer">
                       <input
                         type="checkbox"
@@ -362,14 +374,14 @@ function ExpertDetailPage() {
                     </label>
                     <motion.button
                       type="button"
-                      disabled={!selectedSlot || !consentGiven || booking}
+                      disabled={!selectedSlot || !consentGiven || booking || Boolean(activeBooking)}
                       onClick={handleBook}
                       whileHover={
-                        !selectedSlot || !consentGiven || booking
+                        !selectedSlot || !consentGiven || booking || activeBooking
                           ? {}
                           : { backgroundPosition: 'right center' }
                       }
-                      whileTap={{ scale: !selectedSlot || !consentGiven || booking ? 1 : 0.97 }}
+                      whileTap={{ scale: !selectedSlot || !consentGiven || booking || activeBooking ? 1 : 0.97 }}
                       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                       className="w-full rounded-2xl px-6 py-4 text-sm font-extrabold uppercase tracking-wider text-white shadow-[0_8px_25px_rgba(112, 196, 175,0.35)] transition-colors disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer overflow-hidden"
                     style={{
@@ -379,7 +391,7 @@ function ExpertDetailPage() {
                       transition: '0.5s',
                     }}
                     >
-                      {booking ? 'Đang đặt lịch...' : 'Đặt lịch tư vấn'}
+                      {booking ? 'Đang đặt lịch...' : activeBooking ? 'Bạn đã có lịch đang hoạt động' : 'Đặt lịch tư vấn'}
                     </motion.button>
                   </>
                 ) : (
@@ -423,7 +435,7 @@ function ExpertDetailPage() {
             </motion.div>
 
             {/* ĐỀ XUẤT GIÁ/GIỜ KHÁC */}
-            {user && (
+            {user && !activeBooking && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

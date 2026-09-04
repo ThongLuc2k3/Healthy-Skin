@@ -28,7 +28,7 @@ function formatFee(feeVnd) {
   return `${feeVnd.toLocaleString('vi-VN')}đ / buổi`
 }
 
-function ExpertCard({ expert, index }) {
+function ExpertCard({ expert, index, hasActiveBooking }) {
   const hasUnverified = expert.certifications?.some((c) => !c.verified) ?? false
 
   return (
@@ -119,7 +119,7 @@ function ExpertCard({ expert, index }) {
               transition: '0.5s',
             }}
           >
-            <span>Đặt lịch tư vấn 1-1</span>
+            <span>{hasActiveBooking ? 'Xem hồ sơ chuyên gia' : 'Đặt lịch tư vấn 1-1'}</span>
             <span>→</span>
           </motion.div>
         </div>
@@ -139,12 +139,18 @@ function ExpertListPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('')
   const [dayFilter, setDayFilter] = useState('')
+  const [activeBooking, setActiveBooking] = useState(null)
 
   useEffect(() => {
     if (!user) return
-    Promise.all([apiClient.get('/experts'), apiClient.get('/experts/areas')])
-      .then(([expertsList, areasList]) => {
+    Promise.all([
+      apiClient.get('/experts'),
+      apiClient.get('/experts/areas'),
+      apiClient.get('/experts/bookings/active', { auth: true }),
+    ])
+      .then(([expertsList, areasList, currentBooking]) => {
         setExperts(expertsList)
+        setActiveBooking(currentBooking)
         // Sắp theo bảng chữ cái tiếng Việt thay vì để nguyên thứ tự API trả về (không cố định),         // để mỗi lần tải trang, danh sách khu vực trong bộ lọc luôn hiện đúng 1 thứ tự dự đoán được.
         setAreas([...areasList].sort((a, b) => a.localeCompare(b, 'vi')))
         setStatus('ready')
@@ -249,6 +255,24 @@ function ExpertListPage() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1200px] space-y-12">
+        {activeBooking && (
+          <motion.aside
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="fixed right-4 top-24 z-40 w-[calc(100%-2rem)] max-w-sm rounded-2xl border border-blue-200 bg-white/95 p-4 shadow-2xl backdrop-blur-xl"
+          >
+            <p className="text-[11px] font-black uppercase tracking-wider text-[#2563eb]">Lịch tư vấn đang hoạt động</p>
+            <p className="mt-1 font-bold text-[#172554]">{activeBooking.expert?.name}</p>
+            <p className="mt-1 text-xs text-[#64748B]">{activeBooking.slot}</p>
+            <Link
+              to={`/my-bookings/${activeBooking.id}/chat`}
+              className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-[#2563eb] px-4 py-2.5 text-xs font-bold text-white hover:bg-[#1d4ed8]"
+            >
+              Vào phòng chat với bác sĩ
+            </Link>
+            <p className="mt-2 text-center text-[11px] text-[#64748B]">Hoàn tất lịch này trước khi đặt chuyên gia khác.</p>
+          </motion.aside>
+        )}
         {/* HERO SECTION */}
         <motion.div
           initial={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
@@ -371,7 +395,7 @@ function ExpertListPage() {
           {status === 'ready' && displayedExperts.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {displayedExperts.map((expert, index) => (
-                <ExpertCard key={expert.id} expert={expert} index={index} />
+                <ExpertCard key={expert.id} expert={expert} index={index} hasActiveBooking={Boolean(activeBooking)} />
               ))}
             </div>
           )}

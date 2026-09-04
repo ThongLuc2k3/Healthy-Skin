@@ -22,6 +22,13 @@ async function toShape(row) {
 }
 
 export async function createBooking(userId, expertId, slot) {
+  const activeBooking = await getActiveBookingForUser(userId)
+  if (activeBooking) {
+    const error = new Error('User already has an active expert booking')
+    error.status = 409
+    error.publicMessage = `Bạn đang có lịch với ${activeBooking.expert?.name || 'một chuyên gia'}. Hãy hoàn tất lịch hiện tại trước khi đặt chuyên gia khác.`
+    throw error
+  }
   const expert = await getExpertById(expertId)
   if (!expert?.available_slots.includes(slot)) return null
   const feeVnd = expert.consultation_fee_vnd || 0
@@ -48,6 +55,14 @@ export async function listBookingsForUser(userId) {
     [userId],
   )
   return Promise.all(rows.map(toShape))
+}
+
+export async function getActiveBookingForUser(userId) {
+  const { rows } = await query(
+    "SELECT * FROM expert_bookings WHERE user_id=$1 AND status='booked' ORDER BY created_at DESC LIMIT 1",
+    [userId],
+  )
+  return toShape(rows[0])
 }
 
 export async function listBookingsForUserAndExpert(userId, expertId) {

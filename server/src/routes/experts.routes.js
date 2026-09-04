@@ -6,6 +6,7 @@ import {
   listBookingsForUser,
   getBookingForUser,
   listBookingsForUserAndExpert,
+  getActiveBookingForUser,
   linkReportToBooking,
 } from '../services/bookingService.js'
 import {
@@ -47,6 +48,10 @@ router.post('/apply', asyncHandler(async (req, res) => {
 
 router.get('/bookings/mine', requireAuth, asyncHandler(async (req, res) => {
   res.json(await listBookingsForUser(req.userId))
+}))
+
+router.get('/bookings/active', requireAuth, asyncHandler(async (req, res) => {
+  res.json(await getActiveBookingForUser(req.userId))
 }))
 
 router.get('/:id', asyncHandler(async (req, res) => {

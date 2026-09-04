@@ -59,6 +59,7 @@ function App() {
           <Route path="/experts/dang-ky" element={<ExpertApplicationPage />} />
           <Route path="/experts/:id" element={<ExpertDetailPage />} />
           <Route path="/my-bookings/:id" element={<BookingDetailPage />} />
+          <Route path="/my-bookings/:id/chat" element={<BookingDetailPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reviews" element={<WebsiteReviews />} />

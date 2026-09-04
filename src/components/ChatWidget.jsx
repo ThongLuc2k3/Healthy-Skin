@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AI_REQUEST_TIMEOUT_MS, apiClient, onChatWalletUpdated } from '../lib/apiClient'
 import { useProfile } from '../context/ProfileContext'
 import { useAuth } from '../context/AuthContext'
@@ -30,6 +30,7 @@ function ChatWidget() {
   const { profile } = useProfile()
   const { user } = useAuth()
   const location = useLocation()
+  const navigate = useNavigate()
   const historyKey = chatStorageKey(user)
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([WELCOME_MESSAGE])
@@ -121,6 +122,10 @@ function ChatWidget() {
           provider: data.provider,
           providerModel: data.providerModel,
         }])
+        if (data.navigateTo) {
+          setOpen(false)
+          navigate(data.navigateTo)
+        }
       }
     } catch (err) {
       setErrorMessage(err.message)
