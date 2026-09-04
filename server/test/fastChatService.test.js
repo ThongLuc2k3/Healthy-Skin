@@ -59,3 +59,16 @@ test('xác nhận ngắn dựa trên ngữ cảnh lịch hẹn được chuyển
   ])
   assert.equal(result, null)
 })
+
+test('kết quả AI Intent Router được ưu tiên hơn danh sách keyword', async () => {
+  const messages = [{ role: 'user', text: 'Cho tôi xem dữ liệu da đã lưu' }]
+  const routedToAgent = await getFastChatReply(messages, { route: 'agent_read', confidence: 0.97 })
+  assert.equal(routedToAgent, null)
+
+  const routedToRag = await getFastChatReply(
+    [{ role: 'user', text: 'Retinol có tác dụng gì?' }],
+    { route: 'rag', confidence: 0.98 },
+  )
+  assert.equal(routedToRag.responseMode, 'rag')
+  assert.ok(routedToRag.confidence >= 0.85)
+})

@@ -26,7 +26,7 @@ function ragAnswer(chunk) {
   return `${content}\n\nNguồn: [${chunk.source} > ${chunk.title}]`
 }
 
-export async function getFastChatReply(messages) {
+export async function getFastChatReply(messages, intent = null) {
   const latest = [...messages].reverse().find((message) => message.role === 'user')?.text || ''
   const text = normalize(latest)
   if (!text) return null
@@ -45,6 +45,8 @@ export async function getFastChatReply(messages) {
   const canned = CANNED.find((item) => item.test.test(text))
   if (canned) return { reply: canned.reply, toolsUsed: ['keyword_response'], responseMode: 'keyword' }
 
+  if (intent && !['static', 'rag'].includes(intent.route)) return null
+
   if (text.length <= 180) {
     const guide = APP_GUIDES.find((item) => item.keywords.some((keyword) => text.includes(keyword)))
     if (guide) return { reply: guide.reply, toolsUsed: ['app_guide'], responseMode: 'keyword' }
@@ -52,7 +54,7 @@ export async function getFastChatReply(messages) {
     // RAG chỉ nhận câu hỏi kiến thức thuộc miền da, mỹ phẩm và dinh dưỡng. Câu hỏi về dữ liệu tài
     // khoản hoặc thao tác trong ứng dụng phải được chuyển cho Agent, kể cả khi câu rất ngắn.
     const knowledgeIntent = /\b(da|mun|nam|tan nhang|di ung|kich ung|my pham|thanh phan|serum|kem|sua rua mat|retinol|niacinamide|vitamin|thuc pham|dinh duong|an uong|chong nang|spf|bha|aha)\b/
-    if (!knowledgeIntent.test(text)) return null
+    if (intent?.route !== 'rag' && !knowledgeIntent.test(text)) return null
 
     // Thử hybrid search cho câu kiến thức ngắn. Ngưỡng điểm chặn kết quả yếu/không liên quan.
     const [chunk] = await searchKnowledge(latest, 1)

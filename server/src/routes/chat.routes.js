@@ -7,6 +7,7 @@ import { getFastChatReply } from '../services/fastChatService.js'
 import { getAppointmentFallbackReply } from '../services/appointmentFallbackService.js'
 import { GeminiNotConfiguredError, GeminiRequestError } from '../services/geminiService.js'
 import { AgentProviderError } from '../services/agentClient.js'
+import { classifyChatIntent } from '../services/intentRouterService.js'
 import {
   CHAT_PLANS,
   consumeChatQuestion,
@@ -42,10 +43,11 @@ router.post(
       return res.status(400).json({ error: 'Dữ liệu tin nhắn không hợp lệ.' })
     }
 
-    const fastReply = await getFastChatReply(messages)
+    const intent = await classifyChatIntent(messages)
+    const fastReply = await getFastChatReply(messages, intent)
     if (fastReply) {
       const walletStatus = req.userId ? await getWalletStatus(req.userId) : null
-      return res.json({ ...fastReply, wallet: walletStatus })
+      return res.json({ ...fastReply, intent, wallet: walletStatus })
     }
 
     // Ẩn danh (chưa đăng nhập) không có ví/gói riêng — chỉ bị giới hạn theo chatLimiter (IP).
@@ -67,7 +69,7 @@ router.post(
     const appointmentReply = await getAppointmentFallbackReply(messages, {
       ...(context ?? {}), userId: req.userId || null,
     })
-    if (appointmentReply) return res.json({ ...appointmentReply, wallet: walletStatus })
+    if (appointmentReply) return res.json({ ...appointmentReply, intent, wallet: walletStatus })
 
     let reply
     try {
@@ -100,7 +102,7 @@ router.post(
       throw err
     }
 
-    res.json({ ...reply, responseMode: 'agent', wallet: walletStatus })
+    res.json({ ...reply, responseMode: 'agent', intent, wallet: walletStatus })
   }),
 )
 

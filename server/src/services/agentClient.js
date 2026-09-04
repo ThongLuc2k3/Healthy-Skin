@@ -11,6 +11,7 @@ export class AgentProviderError extends Error {
 }
 
 const REQUEST_TIMEOUT_MS = 105_000
+const ROUTER_TIMEOUT_MS = 15_000
 
 function lowerCaseSchema(value) {
   if (Array.isArray(value)) return value.map(lowerCaseSchema)
@@ -49,4 +50,33 @@ export async function callGroqAgent(messages, systemInstruction, functionDeclara
     if (payload.error?.code !== 'tool_use_failed' && !quotaExceeded && response.status < 500) break
   }
   throw last || new AgentProviderError('Groq không trả về nội dung.')
+}
+
+export async function callGroqJson(messages, systemInstruction) {
+  if (!config.groqApiKey) throw new AgentProviderError('GROQ_API_KEY chưa được cấu hình.', { status: 503 })
+  const models = [...new Set([config.groqModel, config.groqFallbackModel].filter(Boolean))]
+  let last
+  for (const model of models) {
+    try {
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', authorization: `Bearer ${config.groqApiKey}` },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: 'system', content: systemInstruction }, ...messages],
+          response_format: { type: 'json_object' },
+          temperature: 0,
+          max_completion_tokens: 300,
+        }),
+        signal: AbortSignal.timeout(ROUTER_TIMEOUT_MS),
+      })
+      const payload = await response.json().catch(() => ({}))
+      const content = payload.choices?.[0]?.message?.content
+      if (response.ok && content) return { value: JSON.parse(content), model }
+      last = new AgentProviderError('Groq không phân loại được ý định.', { status: response.status, quotaExceeded: response.status === 429, cause: payload.error })
+    } catch (error) {
+      last = error instanceof AgentProviderError ? error : new AgentProviderError('Groq Intent Router không phản hồi.', { cause: error })
+    }
+  }
+  throw last || new AgentProviderError('Groq Intent Router không trả về nội dung.')
 }
