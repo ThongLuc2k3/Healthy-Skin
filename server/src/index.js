@@ -116,6 +116,9 @@ function isLoopbackOrigin(origin) {
 // trong trang, không áp dụng khi điều hướng trực tiếp — đúng triệu chứng đã gặp: ảnh vỡ trên trang
 // nhưng mở link ảnh ở tab riêng lại được).
 app.use(helmet({
+  // Google Identity Services mở cửa sổ đăng nhập khác origin và cần giao tiếp
+  // lại với trang chính sau khi người dùng xác thực.
+  crossOriginOpenerPolicy: { policy: 'same-origin-allow-popups' },
   contentSecurityPolicy: {
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
