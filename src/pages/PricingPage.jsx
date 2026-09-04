@@ -89,7 +89,7 @@ function PricingPage() {
             Gói Trợ Lý
           </h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#64748B]">
-            Miễn phí 5 câu hỏi mỗi ngày để hỏi Trợ Lý về cách dùng app hoặc thành phần cơ bản. Cần
+            Miễn phí 100 câu hỏi mỗi ngày để hỏi Trợ Lý về cách dùng app hoặc thành phần cơ bản. Cần
             hỏi nhiều hơn thì mua thêm gói hoặc nạp ví bên dưới. Nếu bạn cần tư vấn sâu về tình trạng cụ thể, nên{' '}
             <Link to="/experts" className="font-semibold text-[#2563eb] underline">
               đặt lịch với chuyên gia thật

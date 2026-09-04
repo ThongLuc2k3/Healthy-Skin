@@ -2,7 +2,7 @@ import { query } from '../db/connection.js'
 import { getProvider } from '../payments/provider.js'
 
 // Số câu hỏi Trợ Lý miễn phí mỗi ngày cho tài khoản chưa mua thêm gói.
-export const FREE_DAILY_QUESTIONS = 5
+export const FREE_DAILY_QUESTIONS = 100
 
 // Nạp ví theo demo: quy đổi 0,01% số tiền nạp thành điểm tích luỹ, tức 10.000đ = 1 điểm (100.000đ =
 // 10 điểm) — KHÔNG phải 10% (0.1 sẽ ra 100.000đ = 10.000 điểm, lạm phát điểm quá nhiều so với giá
