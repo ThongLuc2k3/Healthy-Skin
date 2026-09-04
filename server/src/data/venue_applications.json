@@ -1,0 +1,69 @@
+[
+  {
+    "business_name": "Skin Glow Beauty Salon",
+    "category": "spa",
+    "contact_name": "Nguyễn Thị Hồng",
+    "contact_phone": "0909123456",
+    "contact_email": "hong.nguyen@skinglow.vn",
+    "area_vi": "Quận 2 (TP. Thủ Đức)",
+    "address_vi": "88 Trần Não, Quận 2",
+    "description_vi": "Salon chăm sóc da mặt, chuyên trị mụn và dưỡng trắng bằng công nghệ ánh sáng sinh học.",
+    "status": "pending",
+    "admin_note": null,
+    "days_ago_submitted": 4
+  },
+  {
+    "business_name": "Phòng khám Da liễu An Khang",
+    "category": "phòng khám",
+    "contact_name": "BS. Trịnh Văn Khang",
+    "contact_phone": "0918234567",
+    "contact_email": "lienhe@ankhangclinic.vn",
+    "area_vi": "Quận Gò Vấp, TP.HCM",
+    "address_vi": "120 Quang Trung, Quận Gò Vấp",
+    "description_vi": "Phòng khám da liễu tổng quát, khám và điều trị mụn, nám, viêm da theo phác đồ cá nhân hoá.",
+    "status": "pending",
+    "admin_note": null,
+    "days_ago_submitted": 2
+  },
+  {
+    "business_name": "Zen Yoga & Sauna",
+    "category": "xông hơi",
+    "contact_name": "Lê Thị Minh Tâm",
+    "contact_phone": "0933456789",
+    "contact_email": "contact@zenyogasauna.vn",
+    "area_vi": "Quận 4, TP.HCM",
+    "address_vi": "35 Tôn Đản, Quận 4",
+    "description_vi": "Không gian xông hơi thảo dược kết hợp yoga thư giãn, phù hợp sau giờ làm việc căng thẳng.",
+    "status": "pending",
+    "admin_note": null,
+    "days_ago_submitted": 1
+  },
+  {
+    "business_name": "Elite Fitness Center",
+    "category": "gym",
+    "contact_name": "Phạm Đức Anh",
+    "contact_phone": "0977345678",
+    "contact_email": "info@elitefitness.vn",
+    "area_vi": "TP. Thủ Đức",
+    "address_vi": "205 Võ Văn Ngân, TP. Thủ Đức",
+    "description_vi": "Phòng gym cao cấp với đầy đủ trang thiết bị, có huấn luyện viên cá nhân và lớp nhóm.",
+    "status": "approved",
+    "admin_note": "Hồ sơ đầy đủ, giá dịch vụ hợp lý. Đã duyệt.",
+    "days_ago_submitted": 14,
+    "days_ago_reviewed": 12
+  },
+  {
+    "business_name": "Mộc Spa Thảo Dược",
+    "category": "spa",
+    "contact_name": "Đỗ Thị Ngọc Mai",
+    "contact_phone": "0966789012",
+    "contact_email": "mocspa.vn@gmail.com",
+    "area_vi": "Quận Tân Phú, TP.HCM",
+    "address_vi": "56 Lũy Bán Bích, Quận Tân Phú",
+    "description_vi": "Spa thảo dược truyền thống, massage và xông hơi bằng nguyên liệu thiên nhiên.",
+    "status": "rejected",
+    "admin_note": "Thiếu giấy phép kinh doanh hợp lệ, đề nghị bổ sung và nộp lại hồ sơ.",
+    "days_ago_submitted": 20,
+    "days_ago_reviewed": 18
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "additionalMembers": [
+    { "email": "khanh.le.office@gmail.com", "fullName": "Khánh Lê", "phone": "0989012345", "dateOfBirth": "1994-06-08" },
+    { "email": "trang.vo123@gmail.com", "fullName": "Trang Võ", "phone": "0990123456", "dateOfBirth": "2001-03-17" },
+    { "email": "nam.nguyen.hn@gmail.com", "fullName": "Nam Nguyễn", "phone": "0901112233", "dateOfBirth": "1996-10-05" }
+  ],
+  "walletTopups": [
+    { "email": "duc.anh.work@gmail.com", "amountVnd": 50000, "daysAgo": 9 },
+    { "email": "phuc.tran.99@gmail.com", "amountVnd": 20000, "daysAgo": 5 },
+    { "email": "khanh.le.office@gmail.com", "amountVnd": 100000, "daysAgo": 10 }
+  ],
+  "planPurchases": [
+    { "email": "duc.anh.work@gmail.com", "planId": "basic_10", "daysAgo": 9 },
+    { "email": "khanh.le.office@gmail.com", "planId": "plus_30", "daysAgo": 6 }
+  ],
+  "expertBookings": [
+    { "email": "hoang.pham.dev@gmail.com", "expertId": "bs_nguyen_van_a", "slot": "Thứ 3 - 14:00", "status": "completed", "daysAgo": 20 },
+    { "email": "kim.oanh.hcm@gmail.com", "expertId": "bs_tran_thi_b", "slot": "Thứ 2 - 10:00", "status": "completed", "daysAgo": 7 },
+    { "email": "nam.nguyen.hn@gmail.com", "expertId": "bs_pham_thi_d", "slot": "Thứ 4 - 08:30", "status": "booked", "daysAgo": 2 }
+  ],
+  "venueBookings": [
+    { "email": "y.nhi.beauty@gmail.com", "venueId": "venue_spa_lotus", "serviceNameVi": "Chăm sóc da mặt cơ bản", "daysAgo": 11 },
+    { "email": "trang.vo123@gmail.com", "venueId": "venue_gym_fit", "serviceNameVi": "Buổi tập cùng PT", "daysAgo": 4 }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "sponsor_name": "Dermalab Việt Nam",
+    "image_url": "placeholder",
+    "link_url": "https://example.com/aff/dermalab-viet-nam",
+    "priority": 1
+  },
+  {
+    "sponsor_name": "SunGuard Cosmetics",
+    "image_url": "placeholder",
+    "link_url": "https://example.com/aff/sunguard-cosmetics",
+    "priority": 2
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "description": "Mở rộng truy vấn tiếng Việt cho hybrid search; không dùng để chẩn đoán.",
+  "groups": [
+    { "intent": "acne", "terms": ["mụn", "nổi mụn", "mụn viêm", "mụn ẩn", "mụn đầu đen", "bít tắc", "acne", "comedone"] },
+    { "intent": "irritation", "terms": ["kích ứng", "đỏ rát", "châm chích", "bỏng rát", "ngứa", "phát ban", "dị ứng mỹ phẩm"] },
+    { "intent": "sun", "terms": ["chống nắng", "kem chống nắng", "spf", "uva", "uvb", "tia uv"] },
+    { "intent": "barrier", "terms": ["hàng rào da", "da khô", "mất nước", "bong tróc", "dưỡng ẩm", "phục hồi"] },
+    { "intent": "actives", "terms": ["hoạt chất", "retinol", "retinoid", "aha", "bha", "salicylic", "benzoyl peroxide", "niacinamide", "vitamin c"] },
+    { "intent": "food_skin", "terms": ["ăn nóng", "đồ nóng", "thực phẩm gây mụn", "sữa gây mụn", "đường gây mụn", "chế độ ăn", "dinh dưỡng"] },
+    { "intent": "product_safety", "terms": ["sản phẩm mới", "test sản phẩm", "thử sản phẩm", "patch test", "bảng thành phần", "inci", "hạn sử dụng"] },
+    { "intent": "expert", "terms": ["bác sĩ", "chuyên gia", "đặt lịch", "khám da", "da liễu", "chuyển tuyến"] },
+    { "intent": "app", "terms": ["healthy skin", "website", "trang web", "lĩnh vực", "web làm về gì", "hồ sơ", "quét ảnh", "lịch sử", "voucher", "ví", "gói trợ lý", "đăng nhập"] }
+  ],
+  "urgent_terms": ["khó thở", "sưng môi", "sưng lưỡi", "choáng", "ngất", "lan nhanh", "đau dữ dội", "sốt", "nhiễm trùng", "chảy máu"]
+}

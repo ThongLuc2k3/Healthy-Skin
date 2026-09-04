@@ -1,0 +1,202 @@
+[
+  {
+    "id": "tom",
+    "name_vi": "Tôm",
+    "category": "food",
+    "flags": ["allergen_common", "high_purine"],
+    "conflicts_with_allergy": ["hai_san"],
+    "conflicts_with_condition": ["gut"],
+    "explanation_vi": "Thuộc nhóm hải sản dễ gây dị ứng, đồng thời có hàm lượng purin cao không tốt cho người bị gout.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "cua_bien",
+    "name_vi": "Cua biển",
+    "category": "food",
+    "flags": ["allergen_common", "high_purine"],
+    "conflicts_with_allergy": ["hai_san"],
+    "conflicts_with_condition": ["gut"],
+    "explanation_vi": "Vừa dễ gây dị ứng hải sản, vừa có hàm lượng purin cao, không tốt cho người bị gout.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "ca_hoi",
+    "name_vi": "Cá hồi",
+    "category": "food",
+    "flags": ["omega3", "high_protein"],
+    "conflicts_with_allergy": ["hai_san"],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Thuộc nhóm hải sản nên có thể gây phản ứng dị ứng, tuy giàu omega-3 tốt cho tim mạch nếu không dị ứng.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "dau_phong",
+    "name_vi": "Đậu phộng (lạc)",
+    "category": "food",
+    "flags": ["allergen_common", "high_fat"],
+    "conflicts_with_allergy": ["dau_phong"],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Là một trong những tác nhân gây dị ứng thực phẩm phổ biến và nghiêm trọng nhất.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "sua_tuoi",
+    "name_vi": "Sữa tươi",
+    "category": "food",
+    "flags": ["allergen_common", "contains_lactose"],
+    "conflicts_with_allergy": ["sua"],
+    "conflicts_with_condition": ["khong_dung_nap_lactose"],
+    "explanation_vi": "Chứa lactose và đạm sữa dễ gây dị ứng hoặc khó tiêu ở người không dung nạp lactose.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "sua_chua_khong_duong",
+    "name_vi": "Sữa chua không đường",
+    "category": "food",
+    "flags": ["probiotic", "contains_lactose"],
+    "conflicts_with_allergy": ["sua"],
+    "conflicts_with_condition": ["khong_dung_nap_lactose"],
+    "explanation_vi": "Có nguồn gốc từ sữa nên vẫn có thể gây dị ứng hoặc khó tiêu, dù lượng lactose đã giảm phần nào qua lên men.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "banh_mi_lua_mi",
+    "name_vi": "Bánh mì lúa mì",
+    "category": "food",
+    "flags": ["contains_gluten", "processed"],
+    "conflicts_with_allergy": ["gluten"],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Làm từ bột lúa mì chứa gluten, không phù hợp với người dị ứng hoặc nhạy cảm gluten.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "trung_ga",
+    "name_vi": "Trứng gà",
+    "category": "food",
+    "flags": ["allergen_common", "high_cholesterol"],
+    "conflicts_with_allergy": ["trung"],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Là một trong các thực phẩm dễ gây dị ứng phổ biến nhất, đặc biệt ở trẻ em.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "dau_nanh",
+    "name_vi": "Đậu nành / Sữa đậu nành",
+    "category": "food",
+    "flags": ["allergen_common", "phytoestrogen"],
+    "conflicts_with_allergy": ["dau_nanh"],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Chứa protein dễ gây dị ứng ở một số người nhạy cảm với đậu nành.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "me_food",
+    "name_vi": "Mè (vừng)",
+    "category": "food",
+    "flags": ["allergen_common"],
+    "conflicts_with_allergy": ["me"],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Hạt mè là tác nhân gây dị ứng thực phẩm được ghi nhận ngày càng phổ biến.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "nuoc_ngot_co_gas",
+    "name_vi": "Nước ngọt có gas",
+    "category": "food",
+    "flags": ["high_sugar", "high_gi"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": ["tieu_duong", "gan_nhiem_mo"],
+    "explanation_vi": "Hàm lượng đường cao làm tăng đường huyết nhanh, không tốt cho người tiểu đường hoặc gan nhiễm mỡ.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "thit_bo",
+    "name_vi": "Thịt bò",
+    "category": "food",
+    "flags": ["high_purine", "high_fat"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": ["gut"],
+    "explanation_vi": "Thịt đỏ có hàm lượng purin khá cao, người bị gout nên hạn chế.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "noi_tang_dong_vat",
+    "name_vi": "Nội tạng động vật",
+    "category": "food",
+    "flags": ["high_purine", "high_cholesterol"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": ["gut", "gan_nhiem_mo"],
+    "explanation_vi": "Rất giàu purin và cholesterol, nguy cơ cao cho người bị gout và gan nhiễm mỡ.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "rau_cai_xanh",
+    "name_vi": "Rau cải xanh",
+    "category": "food",
+    "flags": ["high_fiber"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Rau xanh lành mạnh, ít calo, phù hợp với hầu hết chế độ ăn.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "gao_lut",
+    "name_vi": "Gạo lứt",
+    "category": "food",
+    "flags": ["low_gi", "high_fiber"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Chỉ số đường huyết thấp hơn gạo trắng, tốt cho người tiểu đường và kiểm soát cân nặng.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "khoai_lang",
+    "name_vi": "Khoai lang",
+    "category": "food",
+    "flags": ["low_gi", "high_fiber"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Chỉ số đường huyết thấp, giàu chất xơ, phù hợp với người tiểu đường và người muốn giảm cân.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "thuc_pham_che_bien_san",
+    "name_vi": "Thực phẩm chế biến sẵn nhiều muối (đồ hộp, dưa muối)",
+    "category": "food",
+    "flags": ["high_sodium", "processed"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": ["cao_huyet_ap", "suy_than"],
+    "explanation_vi": "Hàm lượng natri cao làm tăng huyết áp và gây áp lực lên chức năng lọc của thận.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "ca_phe",
+    "name_vi": "Cà phê",
+    "category": "food",
+    "flags": ["caffeine"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": ["cao_huyet_ap"],
+    "explanation_vi": "Caffeine có thể làm tăng huyết áp tạm thời, người cao huyết áp nên hạn chế.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "do_chien_ran",
+    "name_vi": "Đồ chiên rán",
+    "category": "food",
+    "flags": ["high_fat", "processed", "high_gi"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": ["gan_nhiem_mo", "cao_huyet_ap"],
+    "explanation_vi": "Nhiều dầu mỡ bão hòa, không tốt cho tim mạch, gan nhiễm mỡ và huyết áp.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "socola_den",
+    "name_vi": "Socola đen",
+    "category": "food",
+    "flags": ["caffeine", "high_sugar"],
+    "conflicts_with_allergy": [],
+    "conflicts_with_condition": [],
+    "explanation_vi": "Chứa caffeine và một lượng đường nhất định, nên dùng điều độ, đặc biệt với người nhạy cảm caffeine.",
+    "source": "placeholder, cần xác minh"
+  }
+]

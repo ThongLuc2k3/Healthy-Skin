@@ -1,0 +1,91 @@
+[
+  {
+    "id": "venue_spa_lotus",
+    "name": "Lotus Spa & Skincare",
+    "category": "spa",
+    "address_vi": "12 Nguyễn Huệ, Quận 1",
+    "area_vi": "Quận 1, TP.HCM",
+    "description_vi": "Spa chăm sóc da mặt, trị mụn nhẹ nhàng, không xâm lấn.",
+    "cover_image_url": "placeholder",
+    "latitude": 10.7745,
+    "longitude": 106.7032,
+    "services": [
+      { "name_vi": "Chăm sóc da mặt cơ bản", "price_vnd": 250000, "duration_minutes": 60 },
+      { "name_vi": "Liệu trình trị mụn 3 buổi", "price_vnd": 690000, "duration_minutes": 180 }
+    ]
+  },
+  {
+    "id": "venue_clinic_glow",
+    "name": "Phòng khám Da liễu Glow",
+    "category": "phòng khám",
+    "address_vi": "45 Lê Văn Sỹ, Quận 3",
+    "area_vi": "Quận 3, TP.HCM",
+    "description_vi": "Phòng khám da liễu, tư vấn và điều trị các vấn đề về da.",
+    "cover_image_url": "placeholder",
+    "latitude": 10.7889,
+    "longitude": 106.6803,
+    "services": [
+      { "name_vi": "Khám da liễu tổng quát", "price_vnd": 300000, "duration_minutes": 30 },
+      { "name_vi": "Nặn mụn y khoa", "price_vnd": 200000, "duration_minutes": 45 }
+    ]
+  },
+  {
+    "id": "venue_gym_fit",
+    "name": "FitZone Gym",
+    "category": "gym",
+    "address_vi": "78 Cách Mạng Tháng 8, Quận 10",
+    "area_vi": "Quận 10, TP.HCM",
+    "description_vi": "Phòng gym hiện đại, có huấn luyện viên cá nhân.",
+    "cover_image_url": "placeholder",
+    "latitude": 10.7756,
+    "longitude": 106.6698,
+    "services": [
+      { "name_vi": "Vé tập 1 ngày", "price_vnd": 100000, "duration_minutes": 120 },
+      { "name_vi": "Buổi tập cùng PT", "price_vnd": 350000, "duration_minutes": 60 }
+    ]
+  },
+  {
+    "id": "venue_sauna_relax",
+    "name": "Relax Sauna & Massage",
+    "category": "xông hơi",
+    "address_vi": "9 Phan Xích Long, Phú Nhuận",
+    "area_vi": "Phú Nhuận, TP.HCM",
+    "description_vi": "Xông hơi thảo dược kết hợp massage thư giãn.",
+    "cover_image_url": "placeholder",
+    "latitude": 10.7991,
+    "longitude": 106.6889,
+    "services": [
+      { "name_vi": "Xông hơi + massage 90 phút", "price_vnd": 320000, "duration_minutes": 90 }
+    ]
+  },
+  {
+    "id": "venue_clinic_dermalux",
+    "name": "Phòng khám Da liễu Dermalux",
+    "category": "phòng khám",
+    "address_vi": "23 Nguyễn Trãi, Quận 5",
+    "area_vi": "Quận 5, TP.HCM",
+    "description_vi": "Phòng khám da liễu chuyên trị nám, tàn nhang và chăm sóc da chuyên sâu.",
+    "cover_image_url": "placeholder",
+    "latitude": 10.7563,
+    "longitude": 106.6602,
+    "services": [
+      { "name_vi": "Khám và tư vấn nám da", "price_vnd": 280000, "duration_minutes": 30 },
+      { "name_vi": "Liệu trình trị nám 5 buổi", "price_vnd": 1200000, "duration_minutes": 300 }
+    ]
+  },
+  {
+    "id": "venue_spa_serene",
+    "name": "Serene Beauty Spa",
+    "category": "spa",
+    "address_vi": "56 Hai Bà Trưng, Quận 1",
+    "area_vi": "Quận 1, TP.HCM",
+    "description_vi": "Spa cao cấp chuyên chăm sóc da mặt, massage thư giãn và trẻ hoá da.",
+    "cover_image_url": "placeholder",
+    "latitude": 10.7829,
+    "longitude": 106.7030,
+    "services": [
+      { "name_vi": "Facial dưỡng ẩm chuyên sâu", "price_vnd": 350000, "duration_minutes": 75 },
+      { "name_vi": "Massage mặt & cổ vai gáy", "price_vnd": 220000, "duration_minutes": 45 }
+    ]
+  }
+]

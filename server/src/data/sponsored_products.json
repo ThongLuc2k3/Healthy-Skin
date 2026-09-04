@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sp_serum_niacinamide",
+    "name": "Serum Niacinamide 10% + Zinc 1%",
+    "brand": "Dermalab",
+    "matched_item_id": "niacinamide",
+    "price_vnd": 189000,
+    "affiliate_url": "https://example.com/aff/dermalab-serum-niacinamide",
+    "sponsor_name": "Dermalab Việt Nam",
+    "placements": ["trang_chu", "ket_qua_quet", "tu_van_chuyen_gia"]
+  },
+  {
+    "id": "sp_kem_chong_nang",
+    "name": "Kem chống nắng phổ rộng SPF50+ PA++++",
+    "brand": "SunGuard",
+    "matched_item_id": null,
+    "price_vnd": 245000,
+    "affiliate_url": "https://example.com/aff/sunguard-kem-chong-nang",
+    "sponsor_name": "SunGuard Cosmetics",
+    "placements": ["trang_chu", "ket_qua_quet"]
+  },
+  {
+    "id": "sp_sua_rua_mat_diu_nhe",
+    "name": "Sữa rửa mặt dịu nhẹ không xà phòng",
+    "brand": "PureCell",
+    "matched_item_id": null,
+    "price_vnd": 159000,
+    "affiliate_url": "https://example.com/aff/purecell-sua-rua-mat-diu-nhe",
+    "sponsor_name": "PureCell Skincare",
+    "placements": ["ket_qua_quet", "tu_van_chuyen_gia"]
+  },
+  {
+    "id": "sp_toner_can_bang_pha",
+    "name": "Toner cân bằng pH không cồn",
+    "brand": "Dermalab",
+    "matched_item_id": null,
+    "price_vnd": 179000,
+    "affiliate_url": "https://example.com/aff/dermalab-toner-can-bang-ph",
+    "sponsor_name": "Dermalab Việt Nam",
+    "placements": ["trang_chu"]
+  }
+]

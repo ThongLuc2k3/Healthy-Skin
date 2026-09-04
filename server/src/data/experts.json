@@ -1,0 +1,161 @@
+[
+  {
+    "id": "bs_nguyen_van_a",
+    "name": "BS. Nguyễn Văn A",
+    "specialty": "Da liễu",
+    "clinic_name": "Phòng khám Da liễu Ánh Dương",
+    "area_vi": "Quận 1, TP.HCM",
+    "bio_vi": "10 năm kinh nghiệm điều trị da mụn, da nhạy cảm. Tốt nghiệp Đại học Y Dược TP.HCM, từng công tác tại Bệnh viện Da liễu TP.HCM trước khi mở phòng khám riêng.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Da liễu", "license_no": "BYT-HCM-2015-03271", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true },
+      { "title_vi": "Chứng nhận đào tạo Peel da y khoa", "license_no": "DALIEU-CME-2018-1142", "issuing_authority_vi": "Hội Da liễu Việt Nam", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.7,
+    "reviews": [
+      { "user_display": "Minh Thư", "rating": 5, "comment_vi": "Tư vấn kỹ, dễ hiểu, bác sĩ giải thích rõ nguyên nhân mụn thay vì chỉ kê thuốc." },
+      { "user_display": "Hoàng Long", "rating": 4, "comment_vi": "Phòng khám hơi đông vào cuối tuần nhưng bác sĩ khám rất tận tâm." },
+      { "user_display": "Bảo Trân", "rating": 5, "comment_vi": "Da mình cải thiện rõ sau 3 tuần theo phác đồ bác sĩ kê, không bị kích ứng." },
+      { "user_display": "Quốc Huy", "rating": 5, "comment_vi": "Đặt lịch online tiện, đúng giờ hẹn, không phải chờ lâu như phòng khám khác." }
+    ],
+    "available_slots": ["Thứ 2 - 09:00", "Thứ 3 - 14:00", "Thứ 5 - 16:00", "Thứ 7 - 09:00"],
+    "consultation_fee_vnd": 300000
+  },
+  {
+    "id": "bs_tran_thi_b",
+    "name": "BS. Trần Thị B",
+    "specialty": "Da liễu thẩm mỹ",
+    "clinic_name": "Trung tâm Da liễu & Thẩm mỹ Bạch Ngọc",
+    "area_vi": "Quận 3, TP.HCM",
+    "bio_vi": "Chuyên điều trị nám, tàn nhang, chăm sóc da lão hoá. 8 năm kinh nghiệm lâm sàng, chứng chỉ đào tạo laser thẩm mỹ tại Hàn Quốc.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Da liễu", "license_no": "BYT-HCM-2017-05893", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true },
+      { "title_vi": "Chứng chỉ Laser thẩm mỹ", "license_no": "KR-LASER-2019-2207", "issuing_authority_vi": "Korean Dermatology Association", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.8,
+    "reviews": [
+      { "user_display": "Ngọc Anh", "rating": 5, "comment_vi": "Rất chuyên nghiệp, giải thích cặn kẽ từng bước điều trị nám." },
+      { "user_display": "Thuỳ Dương", "rating": 5, "comment_vi": "Bác sĩ tư vấn trung thực, không ép mua liệu trình đắt tiền." },
+      { "user_display": "Gia Hân", "rating": 4, "comment_vi": "Kết quả tốt nhưng cần kiên trì tái khám đúng lịch mới thấy rõ hiệu quả." }
+    ],
+    "available_slots": ["Thứ 2 - 10:00", "Thứ 4 - 15:00", "Thứ 6 - 09:30"],
+    "consultation_fee_vnd": 450000
+  },
+  {
+    "id": "bs_le_van_c",
+    "name": "BS. Lê Văn C",
+    "specialty": "Dinh dưỡng",
+    "clinic_name": "Phòng khám Dinh dưỡng Cẩm Tú",
+    "area_vi": "Quận 7, TP.HCM",
+    "bio_vi": "Chuyên tư vấn dinh dưỡng cho người có bệnh lý nền (tiểu đường, gout, gan nhiễm mỡ). Tốt nghiệp chuyên khoa Dinh dưỡng - Tiết chế, Đại học Y khoa Phạm Ngọc Thạch.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Dinh dưỡng", "license_no": "BYT-HCM-2016-01984", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.5,
+    "reviews": [
+      { "user_display": "Anh Tuấn", "rating": 4, "comment_vi": "Tư vấn thực đơn khá chi tiết, có lộ trình cụ thể theo tuần." },
+      { "user_display": "Kim Ngân", "rating": 5, "comment_vi": "Rất phù hợp cho người có bệnh nền, bác sĩ hỏi kỹ tiền sử trước khi tư vấn." },
+      { "user_display": "Thanh Hà", "rating": 4, "comment_vi": "Bác sĩ nhiệt tình, trả lời tin nhắn theo dõi khá nhanh." }
+    ],
+    "available_slots": ["Thứ 3 - 09:00", "Thứ 5 - 11:00", "Thứ 6 - 14:00"],
+    "consultation_fee_vnd": 250000
+  },
+  {
+    "id": "bs_pham_thi_d",
+    "name": "BS. Phạm Thị D",
+    "specialty": "Da liễu nhi & người lớn",
+    "clinic_name": "Phòng khám Da liễu Gia đình Diệp Anh",
+    "area_vi": "TP. Thủ Đức",
+    "bio_vi": "Điều trị viêm da cơ địa, chàm, dị ứng da cho mọi lứa tuổi. 12 năm kinh nghiệm, ưu tiên phác đồ dịu nhẹ cho trẻ nhỏ và người có làn da nhạy cảm.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Da liễu", "license_no": "BYT-HCM-2012-00567", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true },
+      { "title_vi": "Chứng chỉ Nhi khoa cơ bản", "license_no": "NHI-CME-2014-0839", "issuing_authority_vi": "Bệnh viện Nhi Đồng TP.HCM", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.9,
+    "reviews": [
+      { "user_display": "Hải Yến", "rating": 5, "comment_vi": "Bác sĩ rất kiên nhẫn và nhẹ nhàng, con mình bớt sợ đi khám hẳn." },
+      { "user_display": "Đức Minh", "rating": 5, "comment_vi": "Chàm sữa của bé đỡ hẳn sau 2 tuần theo hướng dẫn của bác sĩ." },
+      { "user_display": "Phương Linh", "rating": 5, "comment_vi": "Tư vấn kỹ cách chọn sữa tắm, kem dưỡng phù hợp da nhạy cảm." },
+      { "user_display": "Trọng Nghĩa", "rating": 4, "comment_vi": "Lịch hẹn hơi khó đặt vào cuối tuần vì đông khách." }
+    ],
+    "available_slots": ["Thứ 2 - 08:30", "Thứ 4 - 08:30", "Thứ 7 - 10:30"],
+    "consultation_fee_vnd": 350000
+  },
+  {
+    "id": "bs_vo_thanh_e",
+    "name": "BS. Võ Thành E",
+    "specialty": "Da liễu - Trị mụn chuyên sâu",
+    "clinic_name": "Phòng khám Da liễu Thành Đô",
+    "area_vi": "Quận Bình Thạnh, TP.HCM",
+    "bio_vi": "Chuyên điều trị mụn nặng, mụn nội tiết và sẹo rỗ. 7 năm kinh nghiệm, xây dựng phác đồ cá nhân hoá theo cơ địa từng người thay vì áp dụng công thức chung.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Da liễu", "license_no": "BYT-HCM-2018-07452", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true },
+      { "title_vi": "Chứng nhận điều trị sẹo rỗ bằng laser vi điểm", "license_no": "DALIEU-CME-2020-1655", "issuing_authority_vi": "Hội Da liễu Việt Nam", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.6,
+    "reviews": [
+      { "user_display": "Nhật Nam", "rating": 5, "comment_vi": "Mụn nội tiết của mình cải thiện rất nhiều sau 2 tháng điều trị." },
+      { "user_display": "Thảo Vy", "rating": 4, "comment_vi": "Bác sĩ tư vấn kỹ về tác dụng phụ của thuốc trước khi kê đơn." },
+      { "user_display": "Việt Anh", "rating": 5, "comment_vi": "Sẹo rỗ đỡ rõ rệt, bác sĩ theo dõi sát tiến trình từng buổi." }
+    ],
+    "available_slots": ["Thứ 3 - 13:30", "Thứ 5 - 09:00", "Chủ nhật - 10:00"],
+    "consultation_fee_vnd": 400000
+  },
+  {
+    "id": "bs_dang_thi_f",
+    "name": "BS. Đặng Thị F",
+    "specialty": "Da liễu thẩm mỹ - Chống lão hoá",
+    "clinic_name": "Viện Thẩm mỹ Da liễu Hoàng Yến",
+    "area_vi": "Quận 2 (TP. Thủ Đức)",
+    "bio_vi": "Chuyên chống lão hoá, căng bóng da, trẻ hoá da bằng công nghệ không xâm lấn. 9 năm kinh nghiệm, tu nghiệp ngắn hạn về da liễu thẩm mỹ tại Nhật Bản.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Da liễu", "license_no": "BYT-HCM-2014-02918", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true },
+      { "title_vi": "Chứng chỉ HIFU & Laser trẻ hoá da", "license_no": "JP-AESTH-2016-3391", "issuing_authority_vi": "Japan Society of Aesthetic Dermatology", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.7,
+    "reviews": [
+      { "user_display": "Mai Phương", "rating": 5, "comment_vi": "Da căng bóng thấy rõ chỉ sau 1 buổi, bác sĩ tư vấn đúng nhu cầu." },
+      { "user_display": "Xuân Quỳnh", "rating": 4, "comment_vi": "Chi phí hơi cao nhưng chất lượng dịch vụ tương xứng." },
+      { "user_display": "Bích Ngọc", "rating": 5, "comment_vi": "Được giải thích rõ công nghệ trước khi làm, không bị ép liệu trình." }
+    ],
+    "available_slots": ["Thứ 2 - 14:00", "Thứ 4 - 10:00", "Thứ 6 - 16:00"],
+    "consultation_fee_vnd": 500000
+  },
+  {
+    "id": "bs_ho_van_g",
+    "name": "BS. Hồ Văn G",
+    "specialty": "Dinh dưỡng thể thao",
+    "clinic_name": "Trung tâm Dinh dưỡng & Vận động Gia Khang",
+    "area_vi": "Quận Phú Nhuận, TP.HCM",
+    "bio_vi": "Tư vấn dinh dưỡng cho người tập gym, giảm cân, tăng cơ. 6 năm kinh nghiệm phối hợp cùng huấn luyện viên thể hình xây dựng thực đơn theo mục tiêu cụ thể.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Dinh dưỡng", "license_no": "BYT-HCM-2019-04521", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true },
+      { "title_vi": "Chứng chỉ Dinh dưỡng thể thao quốc tế", "license_no": "ISSN-SPORT-2021-08842", "issuing_authority_vi": "International Society of Sports Nutrition", "image_url": "placeholder", "verified": false }
+    ],
+    "rating_avg": 4.5,
+    "reviews": [
+      { "user_display": "Công Danh", "rating": 5, "comment_vi": "Thực đơn tăng cơ rất chi tiết, dễ áp dụng, không cầu kỳ." },
+      { "user_display": "Yến Nhi", "rating": 4, "comment_vi": "Giảm được 4kg trong 2 tháng theo đúng chế độ bác sĩ đưa ra." }
+    ],
+    "available_slots": ["Thứ 3 - 18:00", "Thứ 5 - 18:30", "Thứ 7 - 15:00"],
+    "consultation_fee_vnd": 280000
+  },
+  {
+    "id": "bs_bui_thi_h",
+    "name": "BS. Bùi Thị H",
+    "specialty": "Da liễu - Da nhạy cảm & dị ứng",
+    "clinic_name": "Phòng khám Da liễu Hồng Phúc",
+    "area_vi": "Quận Tân Bình, TP.HCM",
+    "bio_vi": "Chuyên xử lý da kích ứng do mỹ phẩm, viêm da tiếp xúc, phục hồi hàng rào bảo vệ da. 11 năm kinh nghiệm lâm sàng tại các bệnh viện da liễu lớn.",
+    "certifications": [
+      { "title_vi": "Chứng chỉ hành nghề Da liễu", "license_no": "BYT-HCM-2013-01175", "issuing_authority_vi": "Sở Y tế TP.HCM", "image_url": "placeholder", "verified": true }
+    ],
+    "rating_avg": 4.8,
+    "reviews": [
+      { "user_display": "Diệu Linh", "rating": 5, "comment_vi": "Da mình bị kích ứng nặng, bác sĩ hướng dẫn phục hồi rất bài bản." },
+      { "user_display": "Thành Trung", "rating": 5, "comment_vi": "Được tư vấn kỹ cách đọc bảng thành phần mỹ phẩm để tránh dị ứng." },
+      { "user_display": "Cẩm Tú", "rating": 4, "comment_vi": "Bác sĩ dễ thương, giải thích tận tình dù mình hỏi khá nhiều." }
+    ],
+    "available_slots": ["Thứ 2 - 13:00", "Thứ 4 - 09:00", "Thứ 6 - 13:30"],
+    "consultation_fee_vnd": 320000
+  }
+]

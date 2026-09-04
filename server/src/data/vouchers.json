@@ -1,0 +1,110 @@
+[
+  {
+    "id": "voucher_giam_10",
+    "title_vi": "Giảm 10% cho mọi dịch vụ",
+    "discount_type": "percent",
+    "discount_value": 10,
+    "venue_id": null,
+    "points_cost": 50,
+    "source": "points"
+  },
+  {
+    "id": "voucher_giam_50k",
+    "title_vi": "Giảm 50.000đ cho mọi dịch vụ",
+    "discount_type": "fixed",
+    "discount_value": 50000,
+    "venue_id": null,
+    "points_cost": 80,
+    "source": "points"
+  },
+  {
+    "id": "voucher_skinlab_game",
+    "title_vi": "Giảm 15% quà tặng Skin Lab",
+    "discount_type": "percent",
+    "discount_value": 15,
+    "venue_id": null,
+    "points_cost": 0,
+    "source": "game"
+  },
+  {
+    "id": "voucher_goi_tro_ly",
+    "title_vi": "Giảm 20% tặng kèm Gói Trợ Lý",
+    "discount_type": "percent",
+    "discount_value": 20,
+    "venue_id": null,
+    "points_cost": 0,
+    "source": "package"
+  },
+  {
+    "id": "voucher_lotus_20",
+    "title_vi": "Giảm 20% tại Lotus Spa & Skincare",
+    "discount_type": "percent",
+    "discount_value": 20,
+    "venue_id": "venue_spa_lotus",
+    "points_cost": 60,
+    "source": "points"
+  },
+  {
+    "id": "voucher_glow_30k",
+    "title_vi": "Giảm 30.000đ tại Phòng khám Da liễu Glow",
+    "discount_type": "fixed",
+    "discount_value": 30000,
+    "venue_id": "venue_clinic_glow",
+    "points_cost": 40,
+    "source": "points"
+  },
+  {
+    "id": "voucher_fitzone_15",
+    "title_vi": "Giảm 15% tại FitZone Gym",
+    "discount_type": "percent",
+    "discount_value": 15,
+    "venue_id": "venue_gym_fit",
+    "points_cost": 45,
+    "source": "points"
+  },
+  {
+    "id": "voucher_relax_50k",
+    "title_vi": "Giảm 50.000đ tại Relax Sauna & Massage",
+    "discount_type": "fixed",
+    "discount_value": 50000,
+    "venue_id": "venue_sauna_relax",
+    "points_cost": 70,
+    "source": "points"
+  },
+  {
+    "id": "voucher_dermalux_25",
+    "title_vi": "Giảm 25% tại Phòng khám Da liễu Dermalux",
+    "discount_type": "percent",
+    "discount_value": 25,
+    "venue_id": "venue_clinic_dermalux",
+    "points_cost": 90,
+    "source": "points"
+  },
+  {
+    "id": "voucher_serene_40k",
+    "title_vi": "Giảm 40.000đ tại Serene Beauty Spa",
+    "discount_type": "fixed",
+    "discount_value": 40000,
+    "venue_id": "venue_spa_serene",
+    "points_cost": 65,
+    "source": "points"
+  },
+  {
+    "id": "voucher_chao_mung",
+    "title_vi": "Giảm 10% chào mừng thành viên mới",
+    "discount_type": "percent",
+    "discount_value": 10,
+    "venue_id": null,
+    "points_cost": 0,
+    "source": "welcome"
+  },
+  {
+    "id": "voucher_vip_100k",
+    "title_vi": "Giảm 100.000đ cho đơn từ 500.000đ",
+    "discount_type": "fixed",
+    "discount_value": 100000,
+    "venue_id": null,
+    "points_cost": 150,
+    "source": "points"
+  }
+]

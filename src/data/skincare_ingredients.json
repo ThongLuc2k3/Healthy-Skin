@@ -1,0 +1,182 @@
+[
+  {
+    "id": "coconut_oil",
+    "name_vi": "Dầu dừa (Coconut Oil)",
+    "category": "skincare",
+    "flags": ["comedogenic_high"],
+    "conflicts_with_skin_type": ["da_dau", "da_hon_hop"],
+    "explanation_vi": "Thuộc nhóm dầu gây bít tắc lỗ chân lông cao, dễ gây mụn ở da dầu/da hỗn hợp dù mang tiếng tự nhiên.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "retinol",
+    "name_vi": "Retinol (Vitamin A)",
+    "category": "skincare",
+    "flags": ["irritant_potential", "photosensitizing"],
+    "conflicts_with_skin_type": ["da_nhay_cam"],
+    "explanation_vi": "Hoạt chất tái tạo da mạnh, dễ gây đỏ rát, bong tróc ở da nhạy cảm nếu dùng nồng độ cao hoặc chưa quen.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "salicylic_acid",
+    "name_vi": "Axit Salicylic (BHA)",
+    "category": "skincare",
+    "flags": ["exfoliant", "drying"],
+    "conflicts_with_skin_type": ["da_kho", "da_nhay_cam"],
+    "explanation_vi": "Có tính tẩy tế bào chết mạnh, dễ khiến da khô/nhạy cảm thêm khô ráp và kích ứng.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "niacinamide",
+    "name_vi": "Niacinamide (Vitamin B3)",
+    "category": "skincare",
+    "flags": ["gentle", "brightening"],
+    "conflicts_with_skin_type": [],
+    "explanation_vi": "Thành phần lành tính, phù hợp hầu hết loại da, giúp giảm dầu thừa và củng cố hàng rào bảo vệ da.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "hyaluronic_acid",
+    "name_vi": "Axit Hyaluronic (HA)",
+    "category": "skincare",
+    "flags": ["hydrating"],
+    "conflicts_with_skin_type": [],
+    "explanation_vi": "Chất cấp ẩm phân tử lớn, an toàn và phù hợp với hầu hết mọi loại da.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "vitamin_c_ascorbic",
+    "name_vi": "Vitamin C (L-Ascorbic Acid)",
+    "category": "skincare",
+    "flags": ["irritant_potential", "unstable"],
+    "conflicts_with_skin_type": ["da_nhay_cam"],
+    "explanation_vi": "Dạng Vitamin C tinh khiết dễ gây châm chích, ửng đỏ trên da nhạy cảm, đặc biệt ở nồng độ cao.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "benzoyl_peroxide",
+    "name_vi": "Benzoyl Peroxide",
+    "category": "skincare",
+    "flags": ["drying", "irritant_potential"],
+    "conflicts_with_skin_type": ["da_kho", "da_nhay_cam"],
+    "explanation_vi": "Hoạt chất trị mụn mạnh nhưng gây khô căng, bong tróc, dễ kích ứng da khô và da nhạy cảm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "glycerin",
+    "name_vi": "Glycerin",
+    "category": "skincare",
+    "flags": ["hydrating"],
+    "conflicts_with_skin_type": [],
+    "explanation_vi": "Chất giữ ẩm cơ bản, an toàn, phù hợp với mọi loại da.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "cocoa_butter",
+    "name_vi": "Bơ cacao (Cocoa Butter)",
+    "category": "skincare",
+    "flags": ["comedogenic_medium"],
+    "conflicts_with_skin_type": ["da_dau", "da_hon_hop"],
+    "explanation_vi": "Kết cấu đặc và giàu chất béo, dễ gây bít tắc lỗ chân lông ở da dầu và da hỗn hợp.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "isopropyl_myristate",
+    "name_vi": "Isopropyl Myristate",
+    "category": "skincare",
+    "flags": ["comedogenic_high"],
+    "conflicts_with_skin_type": ["da_dau", "da_hon_hop"],
+    "explanation_vi": "Chất làm mềm da tổng hợp có khả năng gây bít tắc lỗ chân lông cao, dễ hình thành mụn ẩn.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "alcohol_denat",
+    "name_vi": "Cồn khô (Alcohol Denat)",
+    "category": "skincare",
+    "flags": ["drying", "irritant_potential"],
+    "conflicts_with_skin_type": ["da_kho", "da_nhay_cam"],
+    "explanation_vi": "Dễ bay hơi và làm khô da nhanh, có thể phá vỡ hàng rào bảo vệ da khô và da nhạy cảm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "fragrance_parfum",
+    "name_vi": "Hương liệu tổng hợp (Fragrance/Parfum)",
+    "category": "skincare",
+    "flags": ["irritant_potential", "allergen_potential"],
+    "conflicts_with_skin_type": ["da_nhay_cam"],
+    "explanation_vi": "Là một trong những nguyên nhân gây kích ứng và dị ứng da phổ biến nhất trong mỹ phẩm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "essential_oil_citrus",
+    "name_vi": "Tinh dầu cam/chanh (Citrus Essential Oil)",
+    "category": "skincare",
+    "flags": ["photosensitizing", "irritant_potential"],
+    "conflicts_with_skin_type": ["da_nhay_cam"],
+    "explanation_vi": "Dễ gây kích ứng và tăng nhạy cảm với ánh nắng, không phù hợp với da nhạy cảm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "glycolic_acid",
+    "name_vi": "Axit Glycolic (AHA)",
+    "category": "skincare",
+    "flags": ["exfoliant", "photosensitizing"],
+    "conflicts_with_skin_type": ["da_kho", "da_nhay_cam"],
+    "explanation_vi": "Tẩy da chết hóa học mạnh, có thể gây khô rát và tăng nhạy cảm ánh nắng ở da khô, da nhạy cảm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "ceramide",
+    "name_vi": "Ceramide",
+    "category": "skincare",
+    "flags": ["barrier_repair"],
+    "conflicts_with_skin_type": [],
+    "explanation_vi": "Thành phần củng cố hàng rào bảo vệ da, phù hợp mọi loại da, đặc biệt tốt cho da khô.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "centella_asiatica",
+    "name_vi": "Rau má (Centella Asiatica)",
+    "category": "skincare",
+    "flags": ["soothing"],
+    "conflicts_with_skin_type": [],
+    "explanation_vi": "Có tác dụng làm dịu, phù hợp với da nhạy cảm và da đang bị mụn viêm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "tea_tree_oil",
+    "name_vi": "Tinh dầu tràm trà (Tea Tree Oil)",
+    "category": "skincare",
+    "flags": ["irritant_potential"],
+    "conflicts_with_skin_type": ["da_kho", "da_nhay_cam"],
+    "explanation_vi": "Có tính kháng khuẩn tốt cho da dầu mụn nhưng dễ gây khô và kích ứng nếu dùng trên da khô, da nhạy cảm.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "mineral_oil",
+    "name_vi": "Dầu khoáng (Mineral Oil)",
+    "category": "skincare",
+    "flags": ["occlusive"],
+    "conflicts_with_skin_type": ["da_dau"],
+    "explanation_vi": "Tạo lớp màng bít trên da, có thể gây cảm giác bí và nặng mặt ở da dầu.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "squalane",
+    "name_vi": "Squalane",
+    "category": "skincare",
+    "flags": ["hydrating"],
+    "conflicts_with_skin_type": [],
+    "explanation_vi": "Kết cấu nhẹ, mô phỏng dầu tự nhiên của da, phù hợp với hầu hết mọi loại da.",
+    "source": "placeholder, cần xác minh"
+  },
+  {
+    "id": "lanolin",
+    "name_vi": "Lanolin",
+    "category": "skincare",
+    "flags": ["comedogenic_medium", "allergen_potential"],
+    "conflicts_with_skin_type": ["da_dau", "da_nhay_cam"],
+    "explanation_vi": "Dễ gây bít tắc lỗ chân lông và có nguy cơ gây dị ứng ở một số người da nhạy cảm.",
+    "source": "placeholder, cần xác minh"
+  }
+]

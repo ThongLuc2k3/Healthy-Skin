@@ -1,0 +1,82 @@
+[
+  {
+    "email": "linh.tran92@gmail.com",
+    "author_name": "Linh Trần",
+    "phone": "0901234567",
+    "date_of_birth": "1998-04-12",
+    "rating": 5,
+    "title": "Quét sản phẩm rất tiện, đỡ phải tự tra thành phần",
+    "content": "Mình hay mua mỹ phẩm online nên không biết thành phần có hợp da dầu mụn không. Từ khi dùng tính năng quét sản phẩm của web, chỉ cần chụp lại bảng thành phần là biết ngay có xung đột gì không, đỡ mất công tra cứu từng chất.",
+    "days_ago": 21
+  },
+  {
+    "email": "hoang.pham.dev@gmail.com",
+    "author_name": "Hoàng Phạm",
+    "phone": "0912345678",
+    "date_of_birth": "1995-11-02",
+    "rating": 4,
+    "title": "Đặt lịch với bác sĩ da liễu khá nhanh",
+    "content": "Mình đặt lịch tư vấn với BS. Nguyễn Văn A qua web, gửi hồ sơ da trước rồi nhắn tin trao đổi ngay trong khung giờ hẹn. Không phải đi lại nhiều lần như trước, chỉ hơi tiếc là chưa có gọi video trực tiếp.",
+    "days_ago": 18
+  },
+  {
+    "email": "thu.nguyen.skincare@gmail.com",
+    "author_name": "Thu Nguyễn",
+    "phone": "0923456789",
+    "date_of_birth": "2000-07-25",
+    "rating": 5,
+    "title": "Giao diện dễ dùng, phù hợp người mới tìm hiểu chăm da",
+    "content": "Mình không rành về thành phần mỹ phẩm lắm, web giải thích khá dễ hiểu bằng tiếng Việt, không dùng thuật ngữ khó hiểu. Phần gợi ý sản phẩm thay thế cũng hữu ích khi phát hiện thành phần không hợp da.",
+    "days_ago": 15
+  },
+  {
+    "email": "minh.khoa.fit@gmail.com",
+    "author_name": "Minh Khoa",
+    "phone": "0934567890",
+    "date_of_birth": "1997-02-18",
+    "rating": 4,
+    "title": "Tính năng theo dõi thực phẩm hữu ích cho người bị dị ứng",
+    "content": "Mình bị dị ứng hải sản nên hay phải để ý kỹ thành phần món ăn ngoài hàng. Công cụ quét/tra cứu thực phẩm của web giúp mình đối chiếu nhanh hơn, dù đôi khi món ăn Việt Nam chưa có sẵn trong danh mục.",
+    "days_ago": 12
+  },
+  {
+    "email": "y.nhi.beauty@gmail.com",
+    "author_name": "Ý Nhi",
+    "phone": "0945678901",
+    "date_of_birth": "1999-09-09",
+    "rating": 5,
+    "title": "Đổi voucher đi spa rất đáng, tiết kiệm được kha khá",
+    "content": "Tích điểm từ việc dùng app một thời gian rồi đổi voucher giảm giá khi đặt dịch vụ ở Lotus Spa qua mục Dịch Vụ Quanh Bạn. Giá niêm yết rõ ràng, đến nơi đưa mã hoá đơn là được áp dụng ngay, không bị làm khó.",
+    "days_ago": 9
+  },
+  {
+    "email": "duc.anh.work@gmail.com",
+    "author_name": "Đức Anh",
+    "phone": "0956789012",
+    "date_of_birth": "1993-05-30",
+    "rating": 4,
+    "title": "Chatbot trợ lý trả lời khá sát vấn đề đang hỏi",
+    "content": "Hỏi thử vài câu về cách dùng retinol chung với vitamin C thì Trợ Lý trả lời khá đúng trọng tâm, có dẫn thêm lý do vì sao nên cách nhau buổi sáng/tối. Dùng hết lượt miễn phí trong ngày thì phải mua thêm câu hỏi.",
+    "days_ago": 7
+  },
+  {
+    "email": "kim.oanh.hcm@gmail.com",
+    "author_name": "Kim Oanh",
+    "phone": "0967890123",
+    "date_of_birth": "1990-12-14",
+    "rating": 5,
+    "title": "Bác sĩ Trần Thị B tư vấn nám rất tận tâm",
+    "content": "Da mình bị nám sau sinh, đặt lịch tư vấn qua web rồi được bác sĩ hướng dẫn khá chi tiết về liệu trình và những lưu ý khi dùng kem trị nám. Cảm giác yên tâm hơn nhiều so với việc tự mua thuốc theo lời truyền miệng.",
+    "days_ago": 5
+  },
+  {
+    "email": "phuc.tran.99@gmail.com",
+    "author_name": "Phúc Trần",
+    "phone": "0978901234",
+    "date_of_birth": "1999-01-20",
+    "rating": 3,
+    "title": "Nhìn chung ổn, mong có thêm nhiều chuyên gia hơn",
+    "content": "App dùng tốt, đặc biệt phần hồ sơ da cá nhân lưu lại thông tin dị ứng rất tiện khi đi khám. Chỉ mong danh sách chuyên gia đa dạng hơn nữa, khu vực mình ở hơi ít lựa chọn phòng khám gần.",
+    "days_ago": 3
+  }
+]

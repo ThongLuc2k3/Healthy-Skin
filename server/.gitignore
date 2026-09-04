@@ -1,0 +1,19 @@
+node_modules
+.env
+.env.*
+!.env.example
+data/*.sqlite
+data/*.sqlite-journal
+data/*.sqlite-wal
+data/*.sqlite-shm
+uploads/
+src/qa/reports/
+
+# Phòng hờ nếu ai đó lỡ đặt file khóa/service-account vào đây — không nên xảy ra,
+# thông tin xác thực phải lưu ngoài thư mục dự án (xem .env.example)
+*.pem
+*.key
+*serviceaccount*.json
+*service-account*.json
+*credentials*.json
+
