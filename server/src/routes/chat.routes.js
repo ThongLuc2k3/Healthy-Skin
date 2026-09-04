@@ -62,6 +62,13 @@ router.post(
       }
     }
 
+    // Luồng đặt lịch nhiều lượt có bộ xử lý nội bộ dựa trên dữ liệu thật. Chạy sau bước tính quota
+    // nhưng trước LLM để “rẻ nhất”, “chiều mát”, “xác nhận” không bị gọi lại tool tìm kiếm/RAG.
+    const appointmentReply = await getAppointmentFallbackReply(messages, {
+      ...(context ?? {}), userId: req.userId || null,
+    })
+    if (appointmentReply) return res.json({ ...appointmentReply, wallet: walletStatus })
+
     let reply
     try {
       const latestUserText = [...messages].reverse().find((message) => message.role === 'user')?.text || ''

@@ -30,17 +30,14 @@ test('chủ đề mới không cần khai báo keyword vẫn được hybrid RAG
 
 test('câu hỏi lĩnh vực website không bị trả nhầm tài liệu mụn', async () => {
   const result = await ask('Trang web bạn đang làm về lĩnh vực nào?')
-  assert.equal(result.responseMode, 'rag')
+  assert.equal(result.responseMode, 'keyword')
   assert.match(result.reply, /công nghệ hỗ trợ chăm sóc da và dinh dưỡng/i)
   assert.doesNotMatch(result.reply, /Mụn có thể biểu hiện/)
-  assert.ok(result.confidence >= 0.85)
 })
 
-test('RAG không đoán khi không có kết quả đạt 85 phần trăm', async () => {
+test('câu ngoài miền kiến thức được chuyển Agent thay vì ép vào RAG', async () => {
   const result = await ask('Cách sửa động cơ phản lực trên sao Hỏa?')
-  assert.equal(result.responseMode, 'rag_no_match')
-  assert.equal(result.confidence, 0)
-  assert.match(result.reply, /chưa biết/i)
+  assert.equal(result, null)
 })
 
 test('câu mơ hồ được chuyển tiếp cho Agent', async () => {
@@ -49,6 +46,16 @@ test('câu mơ hồ được chuyển tiếp cho Agent', async () => {
 
 test('yêu cầu thao tác và xác nhận luôn được chuyển cho Agent', async () => {
   assert.equal(await ask('Đặt lịch chuyên gia giúp tôi'), null)
+  assert.equal(await ask('Xem ví tôi còn bao nhiêu'), null)
   assert.equal(await ask('Tôi đồng ý, đặt đi'), null)
   assert.equal(await ask('xác nhất'), null)
+})
+
+test('xác nhận ngắn dựa trên ngữ cảnh lịch hẹn được chuyển Agent', async () => {
+  const result = await getFastChatReply([
+    { role: 'user', text: 'Tìm bác sĩ rẻ nhất giúp tôi' },
+    { role: 'assistant', text: 'Bạn muốn đặt lịch với BS. A lúc Thứ 6 - 14:00 không?' },
+    { role: 'user', text: 'chốt' },
+  ])
+  assert.equal(result, null)
 })

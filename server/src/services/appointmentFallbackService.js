@@ -1,5 +1,5 @@
 import { listExperts } from './expertService.js'
-import { createBooking } from './bookingService.js'
+import { createBooking, getActiveBookingForUser } from './bookingService.js'
 import { createThreadForBooking } from './consultationService.js'
 
 function normalize(value) {
@@ -35,6 +35,18 @@ export async function getAppointmentFallbackReply(messages, context = {}) {
   const hasBookingContext = /\b(dat lich|lich hen|hen bac si|hen chuyen gia)\b/.test(userConversation)
   const isBookingFollowUp = /\b(re nhat|gia re|chieu mat|chieu muon|chon|bac si nay|gio nay|xac (nhan|nhat)|dong y|chot|dat di|ok dat)\b/.test(text)
   if (!hasBookingContext || (!/\b(dat lich|lich hen|hen bac si|hen chuyen gia)\b/.test(text) && !isBookingFollowUp)) return null
+
+  if (context.userId) {
+    const activeBooking = await getActiveBookingForUser(context.userId)
+    if (activeBooking) {
+      return {
+        reply: `Bạn đang có lịch với ${activeBooking.expert?.name || 'chuyên gia'} lúc ${activeBooking.slot}. Mình sẽ mở phòng chat hiện tại; bạn cần hoàn tất lịch này trước khi đặt chuyên gia khác.`,
+        navigateTo: `/my-bookings/${activeBooking.id}/chat`,
+        toolsUsed: ['appointment_fallback', 'list_my_expert_bookings'],
+        responseMode: 'agent_fallback',
+      }
+    }
+  }
 
   const experts = await listExperts()
   const wantsAcne = /\b(mun|noi mun|acne)\b/.test(userConversation)
