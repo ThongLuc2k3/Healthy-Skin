@@ -11,6 +11,7 @@ export default function GoogleSignInButton({ acceptedTerms = false, onSuccess, o
   useEffect(() => {
     if (!clientId) return undefined
     let cancelled = false
+    let resizeFrame
     function render() {
       if (cancelled || !window.google || !targetRef.current) return
       window.google.accounts.id.initialize({
@@ -28,6 +29,10 @@ export default function GoogleSignInButton({ acceptedTerms = false, onSuccess, o
       })
       setReady(true)
     }
+    function handleResize() {
+      cancelAnimationFrame(resizeFrame)
+      resizeFrame = requestAnimationFrame(render)
+    }
     if (window.google) render()
     else {
       let script = document.querySelector('script[data-healthy-skin-google]')
@@ -41,9 +46,14 @@ export default function GoogleSignInButton({ acceptedTerms = false, onSuccess, o
       }
       script.addEventListener('load', render, { once: true })
     }
-    return () => { cancelled = true }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(resizeFrame)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   if (!clientId) return <p className="rounded-xl bg-amber-50 p-2.5 text-center text-xs font-semibold text-amber-700">Chưa cấu hình Google Client ID.</p>
-  return <div className={`relative flex min-h-11 w-full justify-center overflow-hidden ${disabled || !ready ? 'pointer-events-none opacity-60' : ''}`}><div ref={targetRef} className="flex w-full justify-center" /></div>
+  return <div className={`relative flex min-h-11 w-full min-w-0 justify-center overflow-hidden ${disabled || !ready ? 'pointer-events-none opacity-60' : ''}`}><div ref={targetRef} className="flex w-full min-w-0 justify-center" /></div>
 }
