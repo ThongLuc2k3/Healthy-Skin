@@ -121,6 +121,7 @@ function ChatWidget() {
           confidence: data.confidence,
           provider: data.provider,
           providerModel: data.providerModel,
+          pendingActionToken: data.pendingActionToken,
         }])
         if (data.navigateTo) {
           setOpen(false)

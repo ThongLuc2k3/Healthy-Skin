@@ -186,7 +186,7 @@ function normalizeVietnamese(value) {
 
 function requireConfirmation(args, summary, context) {
   const latest = normalizeVietnamese(context.latestUserText)
-  const explicitlyConfirmed = /\b(xac (nhan|nhat)|dong y|toi dong y|chot|ok dat|dat di|thuc hien di|mua di|nap di|doi di|cap nhat di)\b/.test(latest)
+  const explicitlyConfirmed = /\b(xac (nhan|nhat)|dong y|toi dong y|dung roi|dum (oi|roi)|chot|ok|oke|uh|yes|chuan|ok dat|dat di|lam luon|thuc hien di|mua di|nap di|doi di|cap nhat di)\b/.test(latest)
   if (args.confirmed === true && explicitlyConfirmed) return null
   return { requiresConfirmation: true, summary, message: 'Hãy trình bày đầy đủ chi tiết rồi yêu cầu người dùng xác nhận trước khi thực hiện.' }
 }

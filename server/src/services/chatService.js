@@ -60,12 +60,13 @@ async function chatReplyWithGemini(messages, context) {
 
   const toolsUsed = []
   let navigateTo = null
+  let pendingAction = null
   for (let turn = 0; turn < MAX_AGENT_STEPS; turn += 1) {
     const parts = await generateAgentTurn(contents, buildSystemInstruction(context), CHAT_TOOL_SCHEMAS)
     const calls = parts.parts.filter((part) => part.functionCall)
     if (calls.length === 0) {
       const reply = parts.parts.map((part) => part.text || '').join('').trim()
-      return { reply, toolsUsed, provider: 'gemini', providerModel: config.geminiModel, navigateTo }
+      return { reply, toolsUsed, provider: 'gemini', providerModel: config.geminiModel, navigateTo, pendingAction }
     }
 
     contents.push({ role: 'model', parts: parts.parts })
@@ -80,6 +81,7 @@ async function chatReplyWithGemini(messages, context) {
       }
       toolsUsed.push(name)
       if (result?.navigateTo) navigateTo = result.navigateTo
+      if (result?.requiresConfirmation) pendingAction = { name, args, summary: result.summary }
       responseParts.push({ functionResponse: { name, response: { result } } })
     }
     contents.push({ role: 'user', parts: responseParts })
@@ -91,13 +93,14 @@ async function chatReplyWithGroq(messages, context) {
   const conversation = messages.slice(-MAX_MESSAGES).map((message) => ({ role: message.role === 'assistant' ? 'assistant' : 'user', content: String(message.text).slice(0, MAX_MESSAGE_LENGTH) }))
   const toolsUsed = []
   let navigateTo = null
+  let pendingAction = null
   let providerModel = config.groqModel
   for (let turn = 0; turn < MAX_AGENT_STEPS; turn += 1) {
     const result = await callGroqAgent(conversation, buildSystemInstruction(context), CHAT_TOOL_SCHEMAS)
     const message = result.message
     providerModel = result.model
     const calls = message.tool_calls || []
-    if (!calls.length) return { reply: String(message.content || '').trim(), toolsUsed, provider: 'groq', providerModel, navigateTo }
+    if (!calls.length) return { reply: String(message.content || '').trim(), toolsUsed, provider: 'groq', providerModel, navigateTo, pendingAction }
     conversation.push({ role: 'assistant', content: message.content || null, tool_calls: calls })
     for (const call of calls) {
       const name = call.function?.name
@@ -108,6 +111,7 @@ async function chatReplyWithGroq(messages, context) {
       catch (error) { toolResult = { error: error?.message || 'Không thể thực hiện tool lúc này.' } }
       toolsUsed.push(name)
       if (toolResult?.navigateTo) navigateTo = toolResult.navigateTo
+      if (toolResult?.requiresConfirmation) pendingAction = { name, args, summary: toolResult.summary }
       conversation.push({ role: 'tool', tool_call_id: call.id, name, content: JSON.stringify({ result: toolResult }) })
     }
   }

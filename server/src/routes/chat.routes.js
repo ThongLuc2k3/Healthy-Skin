@@ -8,6 +8,7 @@ import { getAppointmentFallbackReply } from '../services/appointmentFallbackServ
 import { GeminiNotConfiguredError, GeminiRequestError } from '../services/geminiService.js'
 import { AgentProviderError } from '../services/agentClient.js'
 import { classifyChatIntent } from '../services/intentRouterService.js'
+import { executeConfirmedPendingAction, isNaturalConfirmation, signPendingChatAction } from '../services/pendingChatActionService.js'
 import {
   CHAT_PLANS,
   consumeChatQuestion,
@@ -64,6 +65,13 @@ router.post(
       }
     }
 
+    const latestUserText = [...messages].reverse().find((message) => message.role === 'user')?.text || ''
+    if ((intent?.route === 'confirm' || isNaturalConfirmation(latestUserText)) && req.userId) {
+      const pendingToken = [...messages].reverse().find((message) => message.role === 'assistant' && message.pendingActionToken)?.pendingActionToken
+      const confirmed = await executeConfirmedPendingAction(pendingToken, req.userId, context ?? {})
+      if (confirmed) return res.json({ ...confirmed, intent, wallet: confirmed.wallet || walletStatus })
+    }
+
     // Luồng đặt lịch nhiều lượt có bộ xử lý nội bộ dựa trên dữ liệu thật. Chạy sau bước tính quota
     // nhưng trước LLM để “rẻ nhất”, “chiều mát”, “xác nhận” không bị gọi lại tool tìm kiếm/RAG.
     const appointmentReply = await getAppointmentFallbackReply(messages, {
@@ -73,7 +81,6 @@ router.post(
 
     let reply
     try {
-      const latestUserText = [...messages].reverse().find((message) => message.role === 'user')?.text || ''
       reply = await chatReply(messages, { ...(context ?? {}), userId: req.userId || null, latestUserText })
     } catch (err) {
       if (err instanceof AgentProviderError) {
@@ -102,7 +109,9 @@ router.post(
       throw err
     }
 
-    res.json({ ...reply, responseMode: 'agent', intent, wallet: walletStatus })
+    const pendingActionToken = reply.pendingAction && req.userId ? signPendingChatAction(reply.pendingAction, req.userId) : null
+    const { pendingAction: _pendingAction, ...safeReply } = reply
+    res.json({ ...safeReply, pendingActionToken, responseMode: 'agent', intent, wallet: walletStatus })
   }),
 )
 
