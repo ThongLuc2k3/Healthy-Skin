@@ -121,6 +121,10 @@ app.use(helmet({
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       'img-src': ["'self'", 'data:', 'https://res.cloudinary.com'],
       'media-src': ["'self'", 'https://res.cloudinary.com'],
+      'script-src': ["'self'", 'https://accounts.google.com/gsi/client'],
+      'frame-src': ["'self'", 'https://accounts.google.com/gsi/'],
+      'connect-src': ["'self'", 'https://accounts.google.com/gsi/'],
+      'style-src': ["'self'", "'unsafe-inline'", 'https://accounts.google.com/gsi/style'],
     },
   },
 }))
