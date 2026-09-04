@@ -45,5 +45,5 @@ export default function GoogleSignInButton({ acceptedTerms = false, onSuccess, o
   }, [])
 
   if (!clientId) return <p className="rounded-xl bg-amber-50 p-2.5 text-center text-xs font-semibold text-amber-700">Chưa cấu hình Google Client ID.</p>
-  return <div className={`relative flex min-h-11 w-full justify-center overflow-hidden ${disabled || !ready ? 'pointer-events-none opacity-60' : ''}`}><div ref={targetRef} className="w-full" /></div>
+  return <div className={`relative flex min-h-11 w-full justify-center overflow-hidden ${disabled || !ready ? 'pointer-events-none opacity-60' : ''}`}><div ref={targetRef} className="flex w-full justify-center" /></div>
 }
