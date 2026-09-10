@@ -13,7 +13,7 @@ import { seed, seedExperts, seedSponsoredContent, seedVenuesAndVouchers, seedWeb
 import { listSkincareItems } from './services/itemService.js'
 import { listExperts } from './services/expertService.js'
 import { seedExpertAccounts } from './services/expertAccountService.js'
-import { seedAdminAccount, DEFAULT_ADMIN_EMAIL, DEFAULT_ADMIN_PASSWORD } from './services/adminAccountService.js'
+import { seedAdminAccount, DEFAULT_ADMIN_EMAIL } from './services/adminAccountService.js'
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js'
 import { generalLimiter } from './middleware/rateLimit.js'
 import authRoutes from './routes/auth.routes.js'
@@ -34,68 +34,85 @@ import vouchersRoutes from './routes/vouchers.routes.js'
 import settlementRoutes from './routes/settlement.routes.js'
 import adminRoutes from './routes/admin.routes.js'
 
+const startupStartedAt = performance.now()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const clientDistPath = path.resolve(__dirname, '../../dist')
 const clientIndexPath = path.join(clientDistPath, 'index.html')
 const hasClientBuild = fs.existsSync(clientIndexPath)
 
 await initDatabase()
+console.log(`[startup] Schema sẵn sàng sau ${Math.round(performance.now() - startupStartedAt)}ms.`)
 
-if ((await listSkincareItems()).length === 0) {
-  const { skincareCount, foodCount } = await seed()
-  console.log(`[db] Đã tự động seed dữ liệu ban đầu: ${skincareCount} skincare, ${foodCount} food.`)
-}
+async function bootstrapData() {
+  if ((await listSkincareItems()).length === 0) {
+    const { skincareCount, foodCount } = await seed()
+    console.log(`[db] Đã tự động seed dữ liệu ban đầu: ${skincareCount} skincare, ${foodCount} food.`)
+  }
 
 // seedExperts/seedSponsoredContent/seedVenuesAndVouchers dùng ON CONFLICT DO UPDATE trên id, nên
 // chạy lại mỗi lần khởi động là an toàn — đảm bảo khi sửa file data/*.json (thêm chuyên gia, đổi
 // tên đối tác...) thì DB dev cục bộ luôn đồng bộ mà không cần xoá bảng thủ công.
-const { expertsCount } = await seedExperts()
-console.log(`[db] Đã đồng bộ dữ liệu chuyên gia: ${expertsCount} chuyên gia.`)
-const experts = await listExperts()
-if (experts.length > 0) {
-  await seedExpertAccounts(experts.map((e) => e.id))
-  console.log(`[db] Đã đồng bộ tài khoản đăng nhập cho ${experts.length} chuyên gia.`)
+  const { expertsCount } = await seedExperts()
+  console.log(`[db] Đã đồng bộ dữ liệu chuyên gia: ${expertsCount} chuyên gia.`)
+  const experts = await listExperts()
+  if (experts.length > 0) {
+    await seedExpertAccounts(experts.map((e) => e.id))
+    console.log(`[db] Đã đồng bộ tài khoản đăng nhập cho ${experts.length} chuyên gia.`)
+  }
+
+  const { productsCount, adsCount } = await seedSponsoredContent()
+  console.log(`[db] Đã đồng bộ dữ liệu tiếp thị liên kết: ${productsCount} sản phẩm, ${adsCount} quảng cáo.`)
+
+  const { venuesCount, servicesCount, vouchersCount } = await seedVenuesAndVouchers()
+  console.log(`[db] Đã đồng bộ dữ liệu Dịch Vụ Quanh Bạn: ${venuesCount} trung tâm, ${servicesCount} dịch vụ, ${vouchersCount} voucher.`)
+
+  const { reviewsCount: venueReviewsCount } = await seedVenueReviews()
+  if (venueReviewsCount > 0) {
+    console.log(`[db] Đã tự động seed đánh giá Dịch Vụ Quanh Bạn: ${venueReviewsCount} đánh giá.`)
+  }
+
+  const { rows: reviewCountRows } = await query('SELECT COUNT(*)::int AS count FROM website_reviews')
+  if (reviewCountRows[0].count === 0) {
+    const { reviewsCount } = await seedWebsiteReviews()
+    console.log(`[db] Đã tự động seed đánh giá website: ${reviewsCount} đánh giá.`)
+  }
+
+  const { applicationsCount } = await seedVenueApplications()
+  if (applicationsCount > 0) {
+    console.log(`[db] Đã tự động seed đơn đăng ký đối tác: ${applicationsCount} đơn.`)
+  }
+
+  const { applicationsCount: expertApplicationsCount } = await seedExpertApplications()
+  if (expertApplicationsCount > 0) {
+    console.log(`[db] Đã tự động seed đơn ứng tuyển chuyên gia: ${expertApplicationsCount} đơn.`)
+  }
+
+  const { seeded: historicalSeeded } = await seedHistoricalActivity()
+  if (historicalSeeded) {
+    console.log('[db] Đã tự động seed lịch sử giao dịch/lịch hẹn mẫu.')
+  }
+
+  const { grantedCount } = await seedUserVouchers()
+  if (grantedCount > 0) {
+    console.log(`[db] Đã cấp thêm ${grantedCount} voucher cho các thành viên chưa đủ ${10} voucher.`)
+  }
+
+  await seedAdminAccount()
+  console.log(`[db] Đã đồng bộ tài khoản Admin: ${DEFAULT_ADMIN_EMAIL}.`)
 }
 
-const { productsCount, adsCount } = await seedSponsoredContent()
-console.log(`[db] Đã đồng bộ dữ liệu tiếp thị liên kết: ${productsCount} sản phẩm, ${adsCount} quảng cáo.`)
-
-const { venuesCount, servicesCount, vouchersCount } = await seedVenuesAndVouchers()
-console.log(`[db] Đã đồng bộ dữ liệu Dịch Vụ Quanh Bạn: ${venuesCount} trung tâm, ${servicesCount} dịch vụ, ${vouchersCount} voucher.`)
-
-const { reviewsCount: venueReviewsCount } = await seedVenueReviews()
-if (venueReviewsCount > 0) {
-  console.log(`[db] Đã tự động seed đánh giá Dịch Vụ Quanh Bạn: ${venueReviewsCount} đánh giá.`)
-}
-
-const { rows: reviewCountRows } = await query('SELECT COUNT(*)::int AS count FROM website_reviews')
-if (reviewCountRows[0].count === 0) {
-  const { reviewsCount } = await seedWebsiteReviews()
-  console.log(`[db] Đã tự động seed đánh giá website: ${reviewsCount} đánh giá.`)
-}
-
-const { applicationsCount } = await seedVenueApplications()
-if (applicationsCount > 0) {
-  console.log(`[db] Đã tự động seed đơn đăng ký đối tác: ${applicationsCount} đơn.`)
-}
-
-const { applicationsCount: expertApplicationsCount } = await seedExpertApplications()
-if (expertApplicationsCount > 0) {
-  console.log(`[db] Đã tự động seed đơn ứng tuyển chuyên gia: ${expertApplicationsCount} đơn.`)
-}
-
-const { seeded: historicalSeeded } = await seedHistoricalActivity()
-if (historicalSeeded) {
-  console.log('[db] Đã tự động seed lịch sử giao dịch/lịch hẹn mẫu.')
-}
-
-const { grantedCount } = await seedUserVouchers()
-if (grantedCount > 0) {
-  console.log(`[db] Đã cấp thêm ${grantedCount} voucher cho các thành viên chưa đủ ${10} voucher.`)
-}
-
-await seedAdminAccount()
-console.log(`[db] Tài khoản Admin: ${DEFAULT_ADMIN_EMAIL} / ${DEFAULT_ADMIN_PASSWORD}`)
+let bootstrapStatus = 'running'
+let bootstrapError = null
+const bootstrapPromise = bootstrapData()
+  .then(() => {
+    bootstrapStatus = 'ready'
+    console.log(`[startup] Dữ liệu nền sẵn sàng sau ${Math.round(performance.now() - startupStartedAt)}ms.`)
+  })
+  .catch((error) => {
+    bootstrapStatus = 'failed'
+    bootstrapError = error
+    console.error('[db] Khởi tạo dữ liệu nền thất bại:', error)
+  })
 
 const app = express()
 app.set('trust proxy', 1)
@@ -155,10 +172,14 @@ app.use((req, res, next) => {
   corsMiddleware(req, res, next)
 })
 app.use(express.json({ limit: '50kb' }))
+app.use('/api', (req, res, next) => {
+  if (req.path === '/health') return next()
+  bootstrapPromise.then(() => bootstrapError ? next(bootstrapError) : next())
+})
 app.use('/api', generalLimiter)
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' })
+  res.json({ status: 'ok', data: bootstrapStatus })
 })
 
 app.use('/api/auth', authRoutes)
@@ -219,7 +240,7 @@ const server = http.createServer(app)
 attachConsultationHub(server)
 
 server.listen(config.port, () => {
-  console.log(`[server] HEALTHY SKIN backend đang chạy tại http://localhost:${config.port}`)
+  console.log(`[server] HEALTHY SKIN backend đang chạy tại http://localhost:${config.port} sau ${Math.round(performance.now() - startupStartedAt)}ms.`)
 
   // "Làm nóng" bcrypt native (threadpool libuv) để request đăng ký/đăng nhập đầu tiên
   // của người dùng thật không phải gánh chi phí khởi tạo — chạy nền, không chặn gì cả.

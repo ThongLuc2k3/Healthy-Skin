@@ -3,6 +3,7 @@ services:
     name: healthy-skin
     env: node
     plan: free
-    buildCommand: npm install && npm --prefix server install && npm run build
+    buildCommand: npm ci && npm --prefix server ci && npm run build
     startCommand: cd server && npm start
+    healthCheckPath: /api/health
     autoDeploy: true

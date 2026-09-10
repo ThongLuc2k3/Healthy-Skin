@@ -1,30 +1,32 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
-import ProfileForm from './pages/ProfileForm'
-import AccountSettingsPage from './pages/AccountSettingsPage'
-import ScanDemoPage from './pages/ScanDemoPage'
-import ScanHistoryPage from './pages/ScanHistoryPage'
-import MotivationPage from './pages/MotivationPage'
-import ExpertListPage from './pages/ExpertListPage'
-import ExpertApplicationPage from './pages/ExpertApplicationPage'
-import ExpertDetailPage from './pages/ExpertDetailPage'
-import BookingDetailPage from './pages/BookingDetailPage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import ChatWidget from './components/ChatWidget'
-import PricingPage from './pages/PricingPage'
-import ExpertDashboardPage from './pages/expert/ExpertDashboardPage'
-import AdminDashboardPage from './pages/admin/AdminDashboardPage'
-import ServicesNearbyPage from './pages/ServicesNearbyPage'
-import VenueApplicationPage from './pages/VenueApplicationPage'
-import ServiceDetailPage from './pages/ServiceDetailPage'
-import MyVouchersPage from './pages/MyVouchersPage'
-import SkinPlaygroundPage from './pages/SkinPlaygroundPage'
-import WebsiteReviews from './pages/WebsiteReviews'
-import AboutPage from './pages/AboutPage'
-import UserProfilePage from './pages/UserProfilePage'
+
+const ProfileForm = lazy(() => import('./pages/ProfileForm'))
+const AccountSettingsPage = lazy(() => import('./pages/AccountSettingsPage'))
+const ScanDemoPage = lazy(() => import('./pages/ScanDemoPage'))
+const ScanHistoryPage = lazy(() => import('./pages/ScanHistoryPage'))
+const MotivationPage = lazy(() => import('./pages/MotivationPage'))
+const ExpertListPage = lazy(() => import('./pages/ExpertListPage'))
+const ExpertApplicationPage = lazy(() => import('./pages/ExpertApplicationPage'))
+const ExpertDetailPage = lazy(() => import('./pages/ExpertDetailPage'))
+const BookingDetailPage = lazy(() => import('./pages/BookingDetailPage'))
+const LoginPage = lazy(() => import('./pages/LoginPage'))
+const RegisterPage = lazy(() => import('./pages/RegisterPage'))
+const ChatWidget = lazy(() => import('./components/ChatWidget'))
+const PricingPage = lazy(() => import('./pages/PricingPage'))
+const ExpertDashboardPage = lazy(() => import('./pages/expert/ExpertDashboardPage'))
+const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'))
+const ServicesNearbyPage = lazy(() => import('./pages/ServicesNearbyPage'))
+const VenueApplicationPage = lazy(() => import('./pages/VenueApplicationPage'))
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'))
+const MyVouchersPage = lazy(() => import('./pages/MyVouchersPage'))
+const SkinPlaygroundPage = lazy(() => import('./pages/SkinPlaygroundPage'))
+const WebsiteReviews = lazy(() => import('./pages/WebsiteReviews'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const UserProfilePage = lazy(() => import('./pages/UserProfilePage'))
 
 function App() {
   const { pathname } = useLocation()
@@ -40,8 +42,9 @@ function App() {
 
       {!isAdmin && <NavBar />}
       <main className="relative z-10">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+        <Suspense fallback={<div className="min-h-screen" aria-label="Đang tải trang" />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfileForm />} />
           <Route path="/tai-khoan" element={<AccountSettingsPage />} />
           <Route path="/scan" element={<ScanDemoPage />} />
@@ -65,10 +68,11 @@ function App() {
           <Route path="/reviews" element={<WebsiteReviews />} />
           <Route path="/nguoi-dung/:id" element={<UserProfilePage />} />
           <Route path="/about" element={<AboutPage />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </main>
       {!isAdmin && <Footer />}
-      {!isAdmin && <ChatWidget />}
+      {!isAdmin && <Suspense fallback={null}><ChatWidget /></Suspense>}
     </div>
   )
 }
